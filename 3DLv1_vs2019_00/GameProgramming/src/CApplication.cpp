@@ -52,6 +52,7 @@ void CApplication::Update()
 	glVertex3f(0.0f, 1.0f, 0.0f);
 	glVertex3f(-0.5f, 0.0f, 0.0f);
 
+	//–Ê‚ÌŒü‚«‚ÍXŽ²•ûŒü
 	glNormal3f(1.0f, 0.0f, 0.0f);
 	glVertex3f(0.0f, 0.0f,0.0f);
 	glVertex3f(0.0f, 0.0f, 1.0f);
