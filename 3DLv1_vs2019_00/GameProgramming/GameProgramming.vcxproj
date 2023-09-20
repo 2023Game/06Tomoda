@@ -51,6 +51,7 @@
     <ClInclude Include="src\CTexture.h" />
     <ClInclude Include="src\CInput.h" />
     <ClInclude Include="src\CUi.h" />
+    <ClInclude Include="src\CVector.h" />
     <ClInclude Include="src\main.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
