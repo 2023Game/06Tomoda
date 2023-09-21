@@ -48,6 +48,7 @@ void CApplication::Update()
 	//GL_TRIAGLES:三角形
 	glBegin(GL_TRIANGLES);
 
+	//三角形１
 	//法線(面の向き)の設定
 	glNormal3f(n.X(), n.Y(), n.Z());
 	//頂点座標の設定
