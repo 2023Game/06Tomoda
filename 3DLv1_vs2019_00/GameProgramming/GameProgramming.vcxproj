@@ -29,6 +29,7 @@
     <ClCompile Include="src\CTexture.cpp" />
     <ClCompile Include="src\CInput.cpp" />
     <ClCompile Include="src\CUi.cpp" />
+    <ClCompile Include="src\CVector.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
