@@ -1,15 +1,16 @@
-#include "CApplication.h"
+ï»¿#include "CApplication.h"
 #include "CRectangle.h"
 //OpenGL
 #include "glut.h"
 #include "CVector.h"
+#include "CTriangle.h"
 
-//ƒNƒ‰ƒX‚Ìstatic•Ï”
+//ã‚¯ãƒ©ã‚¹ã®staticå¤‰æ•°
 CTexture CApplication::mTexture;
 CCharacterManager CApplication::mCharacterManager;
 
-#define SOUND_BGM "res\\mario.wav" //BGM‰¹ºƒtƒ@ƒCƒ‹
-#define SOUND_OVER "res\\mdai.wav" //ƒQ[ƒ€ƒI[ƒo[‰¹ºƒtƒ@ƒCƒ‹
+#define SOUND_BGM "res\\mario.wav" //BGMéŸ³å£°ãƒ•ã‚¡ã‚¤ãƒ«
+#define SOUND_OVER "res\\mdai.wav" //ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼éŸ³å£°ãƒ•ã‚¡ã‚¤ãƒ«
 
 CCharacterManager* CApplication::CharacterManager()
 {
@@ -28,40 +29,40 @@ void CApplication::Start()
 
 void CApplication::Update()
 {
-	//’¸“_‚PC’¸“_‚QC’¸“_‚RC–@üƒf[ƒ^‚Ìì¬
+	//é ‚ç‚¹ï¼‘ï¼Œé ‚ç‚¹ï¼’ï¼Œé ‚ç‚¹ï¼“ï¼Œæ³•ç·šãƒ‡ãƒ¼ã‚¿ã®ä½œæˆ
 	CVector v0, v1, v2, n;
-	//–@ü‚ğãŒü‚«‚Åİ’è‚·‚é
+	//æ³•ç·šã‚’ä¸Šå‘ãã§è¨­å®šã™ã‚‹
 	n.Set(0.0f, 1.0f, 0.0f);
-	//’¸“_1‚ÌÀ•W‚ğİ’è‚·‚é
+	//é ‚ç‚¹1ã®åº§æ¨™ã‚’è¨­å®šã™ã‚‹
 	v0.Set(0.0f, 0.0f, 0.5f);
-	//’¸“_‚Q‚ÌÀ•W‚ğİ’è‚·‚é
+	//é ‚ç‚¹ï¼’ã®åº§æ¨™ã‚’è¨­å®šã™ã‚‹
 	v1.Set(1.0f, 0.0f, 0.0f);
-	//’¸“_‚R‚ÌÀ•W‚ğİ’è‚·‚é
+	//é ‚ç‚¹ï¼“ã®åº§æ¨™ã‚’è¨­å®šã™ã‚‹
 	v2.Set(0.0f, 0.0f, -0.5f);
 
-	//‹“_‚Ìİ’è
-	//gluLookAt(‹“_X,‹“_Y,‹“_Z,’†SX,’†SY,’†SZ,ãŒüX,ãŒüY,ãŒüZ)
+	//è¦–ç‚¹ã®è¨­å®š
+	//gluLookAt(è¦–ç‚¹X,è¦–ç‚¹Y,è¦–ç‚¹Z,ä¸­å¿ƒX,ä¸­å¿ƒY,ä¸­å¿ƒZ,ä¸Šå‘X,ä¸Šå‘Y,ä¸Šå‘Z)
 	gluLookAt(1.0f, 2.0f, 3.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
-	//•`‰æŠJn
-	//glBegin(Œ`)
-	//GL_TRIAGLES:OŠpŒ`
+	//æç”»é–‹å§‹
+	//glBegin(å½¢)
+	//GL_TRIAGLES:ä¸‰è§’å½¢
 	glBegin(GL_TRIANGLES);
 
-	//OŠpŒ`‚P
-	//–@ü(–Ê‚ÌŒü‚«)‚Ìİ’è
+	//ä¸‰è§’å½¢ï¼‘
+	//æ³•ç·š(é¢ã®å‘ã)ã®è¨­å®š
 	glNormal3f(n.X(), n.Y(), n.Z());
-	//’¸“_À•W‚Ìİ’è
+	//é ‚ç‚¹åº§æ¨™ã®è¨­å®š
 	glVertex3f(v0.X(), v0.Y(), v0.Z());
 	glVertex3f(v1.X(), v1.Y(), v1.Z());
 	glVertex3f(v2.X(), v2.Y(), v2.Z());
 
-	//–@ü‚Æ’¸“_‚Ìİ’è
+	//æ³•ç·šã¨é ‚ç‚¹ã®è¨­å®š
 	n.Set(0.0f, 0.0f, 1.0f);
 	v0.Set(0.5f, 0.0f, 0.0f);
 	v1.Set(0.0f, 1.0f, 0.0f);
 	v2.Set(-0.5f, 0.0f, 0.0f);
-	//OŠpŒ`‚Q‚Ì•`‰æ
+	//ä¸‰è§’å½¢ï¼’ã®æç”»
 	glNormal3f(n.X(), n.Y(), n.Z());
 	glVertex3f(v0.X(), v0.Y(), v0.Z());
 	glVertex3f(v1.X(), v1.Y(), v1.Z());
@@ -76,6 +77,24 @@ void CApplication::Update()
 	glVertex3f(v1.X(), v1.Y(), v1.Z());
 	glVertex3f(v2.X(), v2.Y(), v2.Z());
 
-	//•`‰æI—¹
+	//æç”»çµ‚äº†
 	glEnd();
+
+	//ä¸‰è§’å½¢ã‚¯ãƒ©ã‚¹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ä½œæˆ
+	CTriangle t0;
+	CTriangle t1;
+	CTriangle t2;
+	//æ³•ç·šã¨é ‚ç‚¹è¨­å®š
+	t0.Vertex(CVector(1.0f, 0.0f, 0.5f), CVector(2.0f, 0.0f, 0.0f), CVector(1.0f, 0.0f, -0.5f));
+	t0.Normal(CVector(0.0f, 1.0f, 0.0f));
+	//ä¸‰è§’å½¢æç”»
+	t0.Render();
+
+	t1.Vertex(CVector(0.5f, 1.0f, 0.0f), CVector(0.0f, 2.0f, 0.0f), CVector(-0.5f, 1.0f, 0.0f));
+	t1.Normal(CVector(0.0f, 0.0f, 1.0f));
+	t1.Render();
+
+	t2.Vertex(CVector(0.0f, 0.5f, 1.0f), CVector(0.0f, 0.0f, 2.0f), CVector(0.0f, -0.5f, 1.0f));
+	t2.Normal(CVector(1.0f, 0.0f, 0.0f));
+	t2.Render();
 }
