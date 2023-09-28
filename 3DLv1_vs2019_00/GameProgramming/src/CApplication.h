@@ -10,9 +10,9 @@
 #include "CMiss.h"
 #include <vector>
 #include "CCharacterManager.h"
-
 #include "CGame.h"
 #include "CSound.h"
+#include "CModel.h"
 
 class CApplication
 {
@@ -37,6 +37,9 @@ private:
 	CInput mInput;
 	CFont mFont;
 	CMiss* mpMiss;
+	
+	//モデルクラスのインスタンス作成
+	CModel mModel;
 	//CCharacterのポインタの可変長配列
 //	std::vector<CCharacter*> mCharacters;
 public:
