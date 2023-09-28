@@ -7,7 +7,7 @@
 void CModel::Load(char* obj, char* mtl)
 {
 	//ファイルポインタ変数の作成
-	FILE* fp, * fp2;
+	FILE* fp;
 
 	//ファイルからデータを入力
 	//入力エリアを作成する
@@ -17,7 +17,7 @@ void CModel::Load(char* obj, char* mtl)
 	//fopen(ファイル名,モード)
 	//オープンできないときはNULLを返す
 	fp = fopen(mtl, "r");
-	fp2 = fopen(obj, "r");
+	
 	//ファイルオープンエラーの設定
 	//fpがNULLの場合はエラー
 	if (fp == NULL)
@@ -26,12 +26,7 @@ void CModel::Load(char* obj, char* mtl)
 		printf("%s file open error\n", mtl);
 		return;
 	}
-	if (fp2 == NULL)
-	{
-		printf("%s file open error\n", obj);
-		return;
-	}
-
+	
 	//ファイルから1桁入力
 	//fgets(入力エリア,エリアサイズ,ファイルポインタ)
 	//ファイルの最後になるとNULLを返す
@@ -42,13 +37,19 @@ void CModel::Load(char* obj, char* mtl)
 	
 	}
 	
-	while (fgets(buf, sizeof(buf), fp2) != NULL)
+	//ファイルのクローズ
+	fclose(fp);
+	fp = fopen(obj, "r");
+
+	if (fp == NULL)
 	{
-		//入力した値をコンソールに出力する
+		printf("%s file open error\n", obj);
+	}
+
+	while (fgets(buf,sizeof(buf),fp) != NULL) 
+	{
 		printf("%s", buf);
 	}
 
-	//ファイルのクローズ
 	fclose(fp);
-	fclose(fp2);
 }
