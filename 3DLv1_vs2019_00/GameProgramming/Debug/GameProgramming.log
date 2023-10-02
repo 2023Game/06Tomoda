@@ -1,2 +1,32 @@
-﻿  CModel.cpp
+﻿  CApplication.cpp
+  CBullet.cpp
+  CEnemy.cpp
+  CModel.cpp
+C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(94,61): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(94,47): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(94,33): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\GameProgramming\src\CModel.cpp(123,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  CPlayer2.cpp
+C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\GameProgramming\src\CPlayer2.cpp(12,1): warning C4005: 'VELOCITY': マクロが再定義されました。
+C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\GameProgramming\src\CCharacter.h(6): message : 'VELOCITY' の以前の定義を確認してください
+  コードを生成中...
+LINK : warning LNK4098: defaultlib 'MSVCRT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
+LINK : warning LNK4098: defaultlib 'LIBCMT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
+main.obj : warning LNK4099: PDB '' が 'main.obj' で、または '' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CVector.obj : warning LNK4099: PDB 'vc142.pdb' が 'CVector.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CUi.obj : warning LNK4099: PDB 'vc142.pdb' が 'CUi.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CTriangle.obj : warning LNK4099: PDB 'vc142.pdb' が 'CTriangle.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CInput.obj : warning LNK4099: PDB 'vc142.pdb' が 'CInput.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CTexture.obj : warning LNK4099: PDB 'vc142.pdb' が 'CTexture.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CSound.obj : warning LNK4099: PDB 'vc142.pdb' が 'CSound.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CRectangle.obj : warning LNK4099: PDB 'vc142.pdb' が 'CRectangle.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CPoint.obj : warning LNK4099: PDB 'vc142.pdb' が 'CPoint.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CPlayer.obj : warning LNK4099: PDB 'vc142.pdb' が 'CPlayer.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CGame.obj : warning LNK4099: PDB 'vc142.pdb' が 'CGame.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CFont.obj : warning LNK4099: PDB 'vc142.pdb' が 'CFont.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CEnemy2.obj : warning LNK4099: PDB 'vc142.pdb' が 'CEnemy2.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CCharacterManager.obj : warning LNK4099: PDB 'vc142.pdb' が 'CCharacterManager.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CCharacter.obj : warning LNK4099: PDB 'vc142.pdb' が 'CCharacter.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CCamera.obj : warning LNK4099: PDB 'vc142.pdb' が 'CCamera.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+CBlock.obj : warning LNK4099: PDB 'vc142.pdb' が 'CBlock.obj' で、または 'C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\vc142.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
   GameProgramming.vcxproj -> C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\GameProgramming.exe
