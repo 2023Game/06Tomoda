@@ -16,9 +16,11 @@ public:
 	void Normal(const CVector& n);
 	//描画
 	void Render();
+	//Normal(法線ベクトル1,法線ベクトル2,法線ベクトル3)
+	void Normal(const CVector& v0, const CVector& v1, const CVector& v2);
 private:
 	CVector mV[3];//頂点座標
-	CVector mN;//法線
+	CVector mN[3];//法線
 };
 #endif // CTRIANGLE_H
 
