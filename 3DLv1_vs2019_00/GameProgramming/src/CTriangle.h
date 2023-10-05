@@ -8,6 +8,14 @@
 */
 class CTriangle {
 public:
+
+	//マテリアル番号の取得
+	int MaterialIdx();
+
+	//マテリアル番号の設定
+	//Material(マテリアル番号の設定
+	void MaterialIdx(int idx);
+
 	//頂点座標設定
 	//Vertex(頂点1,頂点2,頂点3)
 	void Vertex(const CVector& v0, const CVector& v1, const CVector& v2);
@@ -19,6 +27,7 @@ public:
 	//Normal(法線ベクトル1,法線ベクトル2,法線ベクトル3)
 	void Normal(const CVector& v0, const CVector& v1, const CVector& v2);
 private:
+	int mMaterialIdx; //マテリアル番号
 	CVector mV[3];//頂点座標
 	CVector mN[3];//法線
 };

@@ -48,6 +48,10 @@ void CApplication::Update()
 	//頂点３の座標を設定する
 	v2.Set(0.0f, 0.0f, -0.5f);
 
+	//視点の設定
+	//gluLookAt(視点X,視点Y,視点Z,中心X,中心Y,中心Z,上向X,上向Y,上向Z)
+	gluLookAt(mEye.X(), mEye.Y(), mEye.Z(), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+
 	if (mInput.Key('J'))
 	{
 		mEye = mEye - CVector(0.1f, 0.0f, 0.0f);
@@ -74,11 +78,5 @@ void CApplication::Update()
 	{
 		mEye = mEye + CVector(0.0f, 0.1f, 0.0f);
 	}
-
-	//視点の設定
-	//gluLookAt(視点X,視点Y,視点Z,中心X,中心Y,中心Z,上向X,上向Y,上向Z)
-	gluLookAt(mEye.X(),mEye.Y(),mEye.Z(), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-
 	mModel.Render();
-	
 }

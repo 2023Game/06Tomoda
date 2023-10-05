@@ -33,4 +33,15 @@ void CTriangle::Render() {
 	glNormal3f(mN[2].X(), mN[2].Y(), mN[2].Z());
 	glVertex3f(mV[2].X(), mV[2].Y(), mV[2].Z());
 	glEnd();
+    
+}
+
+int CTriangle::MaterialIdx()
+{
+	return 0;
+}
+
+void CTriangle::MaterialIdx(int idx)
+{
+
 }
