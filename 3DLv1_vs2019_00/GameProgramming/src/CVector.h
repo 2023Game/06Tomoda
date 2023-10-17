@@ -1,4 +1,5 @@
 #pragma once
+#include "CMatrix.h"
 #ifndef CVECTOR_H
 #define CVECTOR_H
 /*
@@ -9,6 +10,9 @@
 class CVector 
 {
 public:
+	//CVector * CMaterialの結果をCVectorで返す
+	CVector operator*(const CMatrix& m);
+
 	//-演算子のオーバーロード
 	//CVector - CVector　の演算結果を返す
 	CVector operator-(const CVector &v) const;
