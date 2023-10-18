@@ -88,6 +88,6 @@ void CApplication::Update()
 	{
 		mEye = mEye + CVector(0.0f, 0.1f, 0.0f);
 	}
-	mModel.Render(CMatrix().Scale(0.1f,0.1f,0.1f));
+	mModel.Render(CMatrix().RotateX(90.0f));
 	mBackGround.Render();
 }
