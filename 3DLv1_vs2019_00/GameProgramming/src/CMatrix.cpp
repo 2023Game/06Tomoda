@@ -115,9 +115,10 @@ CMatrix CMatrix::RotateX(float degree)
 //Translate(ˆÚ“®—ÊX,ˆÚ“®—ÊY,ˆÚ“®—ÊZ)
 CMatrix CMatrix::Translate(float mx, float my, float mz)
 {
-	mM[3][0] = mx;
-    mM[3][1] = my;
-	mM[3][2] = mz;
+	mM[0][0] = 1, mM[0][1] = 0, mM[0][2] = 0, mM[0][3] = 0;
+	mM[1][0] = 0, mM[1][1] = 1, mM[1][2] = 0, mM[1][3] = 0;
+	mM[2][0] = 0, mM[2][1] = 0, mM[2][2] = 1, mM[2][3] = 0;
+	mM[3][0] = mx, mM[3][1] = my, mM[3][2] = mz, mM[3][3] = 1;
 	//‚±‚Ìs—ñ‚ğ•Ô‚·
 	return *this;
 }
