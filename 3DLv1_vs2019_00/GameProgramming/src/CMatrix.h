@@ -9,6 +9,14 @@
 class CMatrix
 {
 public:
+	//行列値の代入
+	//M(行数,列数,値)
+	void M(int row, int col, float value);
+
+	//移動行列の作成
+	//Translate(移動量X,移動量Y,移動量Z)
+	CMatrix Translate(float mx, float my, float mz);
+
 	//回転（X）軸の作成
 	//RotateX
 	CMatrix RotateX(float degree);
