@@ -9,6 +9,10 @@
 class CMatrix
 {
 public:
+	//*演算のオーバーロード
+	//CMatrix * CMatrixの演算結果を返す
+	const CMatrix operator* (const CMatrix& m) const;
+
 	//行列値の代入
 	//M(行数,列数,値)
 	void M(int row, int col, float value);
