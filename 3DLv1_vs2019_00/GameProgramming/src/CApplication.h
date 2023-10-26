@@ -40,7 +40,7 @@ private:
 	CFont mFont;
 	CMiss* mpMiss;
 	CCharacter3 mCharacter;
-	CCharacter3 mPlayer;
+	CPlayer mPlayer;
 	
 	//モデルクラスのインスタンス作成
 	CModel mModel;

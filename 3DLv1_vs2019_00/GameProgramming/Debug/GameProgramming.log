@@ -1,7 +1,2 @@
-﻿  CApplication.cpp
-  CBullet.cpp
-  CEnemy.cpp
-  CEnemy2.cpp
-  main.cpp
-  コードを生成中...
+﻿  CPlayer.cpp
   GameProgramming.vcxproj -> C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\GameProgramming.exe
