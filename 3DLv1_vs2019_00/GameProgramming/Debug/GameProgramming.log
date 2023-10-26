@@ -1,22 +1,7 @@
 ﻿  CApplication.cpp
-  CBlock.cpp
   CBullet.cpp
-  CCamera.cpp
-  CCharacter.cpp
-  CCharacterManager.cpp
   CEnemy.cpp
   CEnemy2.cpp
-  CFont.cpp
-  CGame.cpp
-  CMaterial.cpp
-  CMatrix.cpp
-C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\GameProgramming\src\CMatrix.cpp(62,12): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\GameProgramming\src\CMatrix.cpp(81,12): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\GameProgramming\src\CMatrix.cpp(100,12): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-  CInput.cpp
-  CTriangle.cpp
-  CUi.cpp
-  CVector.cpp
   main.cpp
   コードを生成中...
-C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\GameProgramming\src\CGame.cpp : fatal error C1090: PDB API の呼び出しに失敗しました。エラー コード '3': C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\GameProgramming\Debug\vc142.pdb
+  GameProgramming.vcxproj -> C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\GameProgramming.exe

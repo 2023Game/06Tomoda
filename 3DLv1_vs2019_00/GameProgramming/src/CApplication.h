@@ -13,6 +13,7 @@
 #include "CGame.h"
 #include "CSound.h"
 #include "CModel.h"
+#include "CCharacter3.h"
 
 class CApplication
 {
@@ -38,6 +39,8 @@ private:
 	CInput mInput;
 	CFont mFont;
 	CMiss* mpMiss;
+	CCharacter3 mCharacter;
+	CCharacter3 mPlayer;
 	
 	//モデルクラスのインスタンス作成
 	CModel mModel;
