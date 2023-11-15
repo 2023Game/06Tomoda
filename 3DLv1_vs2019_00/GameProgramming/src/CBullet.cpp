@@ -19,7 +19,7 @@ void CBullet::Update()
 	mPosition = mPosition + CVector(0.0f, 0.0f, 1.0f) * mMatrixRotate;
 }
 
-void CBullet::Render(const CMatrix& m)
+void CBullet::Render()
 {
 	float c[] = { 1.0f,1.0f,0.0f,1.0f };
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, c);

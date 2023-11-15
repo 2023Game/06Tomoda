@@ -24,7 +24,7 @@ public:
 	void Update();
 
 	//•`‰æ
-	void Render(const CMatrix& m);
+	void Render();
 private:
 	//ŽOŠpŒ`
 	CTriangle mT;
