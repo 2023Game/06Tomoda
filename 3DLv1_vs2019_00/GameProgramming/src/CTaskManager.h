@@ -11,6 +11,13 @@
 class CTaskManager 
 {
 public:
+	//タスクの削除
+	void Delete();
+
+	//リストから削除
+	//Remove(タスクのポインタ)
+	void Remove(CTask* task);
+
 	//デストラクタ
 	virtual ~CTaskManager();
 

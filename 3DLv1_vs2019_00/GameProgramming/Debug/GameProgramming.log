@@ -1,5 +1,5 @@
 ﻿  CApplication.cpp
-  CBullet.cpp
+  CCharacter3.cpp
   CEnemy.cpp
   CEnemy2.cpp
   CGame.cpp

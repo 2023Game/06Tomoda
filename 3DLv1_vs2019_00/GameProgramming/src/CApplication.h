@@ -41,7 +41,7 @@ private:
 	CInput mInput;
 	CFont mFont;
 	CMiss* mpMiss;
-	CCharacter3 mCharacter;
+	//CCharacter3 mCharacter;
 	CPlayer mPlayer;
 	
 	//モデルクラスのインスタンス作成
