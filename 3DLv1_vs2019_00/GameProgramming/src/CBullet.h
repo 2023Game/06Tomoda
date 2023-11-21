@@ -7,6 +7,7 @@
 
 //三角形クラスのインクルード
 #include "CTriangle.h"
+#include "CCollider.h"
 
 /*
 弾クラス
@@ -28,6 +29,8 @@ public:
 	//描画
 	void Render();
 private:
+	CCollider mCollider;
+
 	//生存時間
 	int mLife;
 

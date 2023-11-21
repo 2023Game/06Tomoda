@@ -1,4 +1,5 @@
 #include "CBullet.h"
+#include "CCollider.h"
 
 //•‚Æ‰œs‚Ìİ’è
 //Set(•,‰œs)
@@ -36,8 +37,11 @@ void CBullet::Render()
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, c);
 
 	mT.Render(mMatrix);
+
+	mCollider.Render();
 }
 
 CBullet::CBullet()
 	:mLife(50)
+	, mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.1f)
 {}
