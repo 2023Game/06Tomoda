@@ -6,6 +6,7 @@
 #include "CTriangle.h"
 #include "CMatrix.h"
 #include "CTransform.h"
+#include "CCollisionManager.h"
 
 //クラスのstatic変数
 CTexture CApplication::mTexture;
@@ -65,7 +66,7 @@ void CApplication::Start()
 void CApplication::Update()
 {
 	//タスクマネージャの更新
-	mTaskManager.Update();
+	CTaskManager::Instance()->Update();
 
 	//頂点１，頂点２，頂点３，法線データの作成
 	CVector v0, v1, v2, n;
@@ -124,14 +125,10 @@ void CApplication::Update()
 	
 
 	//タスクリストの削除
-	mTaskManager.Delete();
+	CTaskManager::Instance()->Delete();
 
 	//タスクマネージャの描画
-	mTaskManager.Render();
-}
+	CTaskManager::Instance()->Render();
 
-CTaskManager CApplication::mTaskManager;
-CTaskManager* CApplication::TaskManager()
-{
-	return &mTaskManager;
+	CCollisionManager::Instance()->Render();
 }
