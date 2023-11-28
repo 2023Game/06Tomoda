@@ -7,9 +7,11 @@ class CTaskManager;
 タスククラス
 タスククラスの要素
 */
+class CCollisionManager;
 
 class CTask
 {
+	friend CCollisionManager;
 	friend CTaskManager;
 public:
 	//デフォルトコンストラクタ

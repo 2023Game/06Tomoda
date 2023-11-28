@@ -10,6 +10,9 @@
 
 #include "CTask.h"
 
+//コライダクラスの宣言
+class CCollider;
+
 /*
 キャラクタークラス
 ゲームキャラクターの基本的な機能を定義する
@@ -18,6 +21,9 @@
 class CCharacter3 : public CTransform ,public CTask
 {
 public:
+	//衝突処理
+	virtual void Collision(CCollider *m,CCollider *o){}
+
 	//コンストラクタ
 	CCharacter3();
 

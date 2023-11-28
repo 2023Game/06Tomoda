@@ -10,6 +10,9 @@
 class CVector 
 {
 public:
+	//ƒxƒNƒgƒ‹‚Ì’·‚³‚ð•Ô‚·
+	float Length() const;
+
 	//CVector * CMaterial‚ÌŒ‹‰Ê‚ðCVector‚Å•Ô‚·
 	CVector operator*(const CMatrix& m);
 
@@ -45,4 +48,3 @@ private:
 	float mX, mY, mZ;
 };
 #endif // !CVECTOR_H
-

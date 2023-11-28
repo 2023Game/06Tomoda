@@ -17,6 +17,10 @@
 class CBullet : public CCharacter3
 {
 public:
+	//衝突処理
+	//Collider(コライダ1,コライダ2)
+	void Collision(CCollider* m, CCollider* o);
+
 	CBullet();
 
 	//幅と奥行きの設定
