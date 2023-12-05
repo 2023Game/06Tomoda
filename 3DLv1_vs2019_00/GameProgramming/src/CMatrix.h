@@ -9,6 +9,9 @@
 class CMatrix
 {
 public:
+	//‹ts—ñæ“¾
+	CMatrix Transpose() const;
+
 	//s—ñ‚Ìæ“¾
 	float* M() const;
 

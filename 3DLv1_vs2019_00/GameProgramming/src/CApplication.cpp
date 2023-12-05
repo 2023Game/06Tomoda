@@ -7,6 +7,7 @@
 #include "CMatrix.h"
 #include "CTransform.h"
 #include "CCollisionManager.h"
+#include "CBillBoard.h"
 
 //クラスのstatic変数
 CTexture CApplication::mTexture;
@@ -60,6 +61,9 @@ void CApplication::Start()
 	mPlayer.Scale(CVector(0.1f, 0.1f, 0.1f));
 	mPlayer.Position(CVector(0.0f, 0.0f, -3.0f));
 	mPlayer.Rotation(CVector(0.0f, 180.0f, 0.0f));
+
+	//ビルボードの生成
+	new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);
 }
 
 
@@ -123,6 +127,16 @@ void CApplication::Update()
 
 	//
 	gluLookAt(e.X(), e.Y(), e.Z(), c.X(), c.Y(), c.Z(), u.X(), u.Y(), u.Z());
+
+	//モデルビュー行列の取得
+	glGetFloatv(GL_MODELVIEW_MATRIX, mModelViewInverse.M());
+
+	//逆行列の取得
+	mModelViewInverse = mModelViewInverse.Transpose();
+	mModelViewInverse.M(0, 3, 0);
+	mModelViewInverse.M(1, 3, 0);
+	mModelViewInverse.M(2, 3, 0);
+
 	
 	mBackGround.Render();
 	
@@ -134,4 +148,11 @@ void CApplication::Update()
 	CTaskManager::Instance()->Render();
 
 	CCollisionManager::Instance()->Render();
+}
+
+CMatrix CApplication::mModelViewInverse;
+
+const CMatrix& CApplication::ModelViewInverse()
+{
+	return mModelViewInverse;
 }
