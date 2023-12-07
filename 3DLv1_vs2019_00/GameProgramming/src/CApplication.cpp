@@ -128,7 +128,7 @@ void CApplication::Update()
 	CVector e, c, u;
 
 	//視点を求める
-	e = mPlayer.Position() + CVector(0, 1, -3) * mPlayer.MatrixRotate();
+	e = mPlayer.Position() + CVector(-0.2f, 1.0f, -3.0f) * mPlayer.MatrixRotate();
 
 	//中視点を求める
 	c = mPlayer.Position();
