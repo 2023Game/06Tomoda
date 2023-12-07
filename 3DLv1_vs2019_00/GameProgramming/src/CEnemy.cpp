@@ -1,4 +1,5 @@
 #include "CEnemy.h"
+#include "CEffect.h"
 
 //移動速度
 #define VELOCITY CVector(0.0f,0.0f,0.09f)
@@ -26,6 +27,7 @@ void CEnemy::Update()
 	CTransform::Update();
 		//位置を移動
 	mPosition = mPosition + VELOCITY * mMatrixRotate;
+
 }
 
 //衝突処理
@@ -35,7 +37,10 @@ void CEnemy::Collision(CCollider* m, CCollider* o)
 	//コライダのmとoが衝突しているか判定
 	if (CCollider::Collision(m, o))
 	{
+		//エフェクト生成
+		new CEffect(o->Parent()->Position(), 1.0f, 1.0f, "exp.tga", 4, 4, 2);
+
 		//衝突しているときは無効にする
-		mEnabled = false;
+		//mEnabled = false;
 	}
 }
