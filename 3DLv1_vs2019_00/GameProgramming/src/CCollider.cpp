@@ -3,6 +3,7 @@
 
 CCollider::CCollider(CCharacter3* parent, CMatrix* matrix,
 	const CVector& position, float radius)
+	:CCollider()
 {
 	//親設定
 	mpParent = parent;
@@ -17,7 +18,7 @@ CCollider::CCollider(CCharacter3* parent, CMatrix* matrix,
 	mRadius = radius;
 
 	//コリジョンマネージャに追加
-	CCollisionManager::Instance()->Add(this);
+	//CCollisionManager::Instance()->Add(this);
 }
 
 CCharacter3* CCollider::Parent()
@@ -72,4 +73,14 @@ bool CCollider::Collision(CCollider* m, CCollider* o)
 	}
 	//衝突していない
 	return false;
+}
+
+CCollider::CCollider()
+	:mpParent(nullptr)
+	, mpMatrix(&mMatrix)
+	,mType(EType::ESPHERE)
+	, mRadius(0)
+{
+	//コリジョンマネージャの追加
+	CCollisionManager::Instance()->Add(this);
 }
