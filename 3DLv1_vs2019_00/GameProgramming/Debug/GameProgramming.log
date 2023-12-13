@@ -1,4 +1,2 @@
-﻿  CPlayer.cpp
-C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\GameProgramming\src\CPlayer.cpp(9,1): warning C4005: 'VELOCITY': マクロが再定義されました。
-C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\GameProgramming\src\CCharacter.h(6): message : 'VELOCITY' の以前の定義を確認してください
+﻿  CCollider.cpp
   GameProgramming.vcxproj -> C:\Users\yuki\Desktop\Git\06Tomoda\3DLv1_vs2019_00\Debug\GameProgramming.exe
