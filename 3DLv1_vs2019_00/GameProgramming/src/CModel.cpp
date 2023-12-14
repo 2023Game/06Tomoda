@@ -327,3 +327,9 @@ void CModel::Render()
 		mpMaterials[mTriangles[i].MaterialIdx()]->Disabled();
 	}
 }
+
+
+std::vector<CTriangle> CModel::Triangles() const
+{
+	return mTriangles;
+}

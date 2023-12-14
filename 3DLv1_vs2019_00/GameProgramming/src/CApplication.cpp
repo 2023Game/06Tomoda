@@ -38,17 +38,7 @@ CVector mEye;
 
 void CApplication::Start()
 {
-	//三角コライダの確認
-	mCColliderTriangle.Set(nullptr, nullptr,
-		CVector(-50.0f, 0.0f, -50.0f),
-		CVector(-50.0f, 0.0f, 50.0f),
-		CVector(50.0f, 0.0f, -50.0f));
-
-	mCColliderTriangle2.Set(nullptr, nullptr,
-		CVector(50.0f, 0.0f, 50.0f),
-		CVector(50.0f, 0.0f, -50.0f),
-		CVector(-50.0f, 0.0f, 50.0f));
-
+	
 	//C5モデルの読み込み
 	mModelC5.Load(MODEL_C5);
 
@@ -75,6 +65,9 @@ void CApplication::Start()
 
 	//ビルボードの生成
 	new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);
+
+	mColliderMesh.Set(nullptr, nullptr, &mBackGround);
+
 }
 
 
