@@ -62,10 +62,6 @@ void CTaskManager::Render()
 		//Ÿ‚Ö
 		task = task->mpPrev;
 
-		if (task->mpPrev == nullptr)
-		{
-			task->mEnabled;
-		}
 	}
 }
 
