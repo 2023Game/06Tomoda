@@ -21,6 +21,8 @@ class CCollider;
 class CCharacter3 : public CTransform ,public CTask
 {
 public:
+	CCharacter3(int priority);
+
 	//Õ“Ëˆ—
 	virtual void Collision(CCollider *m,CCollider *o){}
 
