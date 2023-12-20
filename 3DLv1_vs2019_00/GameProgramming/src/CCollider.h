@@ -15,7 +15,11 @@ class CCollider : public CTransform,public CTask
 {
 	friend CCollisionManager;
 public:
-	
+
+	//ColliderTriangleSphere(三角コライダ,球コライダ,調節値)
+	//return:true(衝突してる)false(衝突していない)
+	//調節値:衝突しない位置まで戻す値
+	static bool ColliderTriangleSphere(CCollider* triangle, CCollider* sphere, CVector* adjust);
 
 	//CollisionTriangleLine(三角コライダ,線分コライダ,調整値)
 	//return:true(衝突している)false(衝突していない)

@@ -34,13 +34,20 @@ void CEnemy::Update()
 //Collider(コライダ1,コライダ2)
 void CEnemy::Collision(CCollider* m, CCollider* o)
 {
-	//コライダのmとoが衝突しているか判定
-	if (CCollider::Collision(m, o))
+	switch (o->Type())
 	{
-		//エフェクト生成
-		new CEffect(o->Parent()->Position(), 1.0f, 1.0f, "exp.tga", 4, 4, 2);
-
-		//衝突しているときは無効にする
-		//mEnabled = false;
+	case CCollider::EType::ESPHERE:
+		if (CCollider::Collision(m, o))
+		{
+			new CEffect(o->Parent()->Position(), 1.0f, 1.0f, "exp.tga", 4, 4, 2);
+		}
+		break;
+	case CCollider::EType::ETRIANGLE:
+		CVector adjust;
+		if (CCollider::ColliderTriangleSphere(o,m,&adjust))
+		{
+			mPosition = mPosition + adjust;
+		}
+		break;
 	}
 }
