@@ -10,6 +10,7 @@
 class CColliderLine :public CCollider
 {
 public:
+	void ChangePriority();
 	CColliderLine() {}
 	
 	//コンストラクタ(線分コライダ)

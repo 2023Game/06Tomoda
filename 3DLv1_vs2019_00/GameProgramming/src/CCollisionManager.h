@@ -2,13 +2,18 @@
 #ifndef CCOLLISIONMANAGER_H
 #define CCOLLISIONMANAGER_H
 
+#define COLLISIONRANGE 30
+
 #include "CTaskManager.h"
+#include "CCollider.h"
 
 class CCollisionManager : public CTaskManager
 {
 public:
+	void Collision(CCollider* c, int range);
+
 	//衝突処理
-	void Collision();
+	//void Collision();
 
 	//インスタンスの取得
 	static CCollisionManager* Instance();

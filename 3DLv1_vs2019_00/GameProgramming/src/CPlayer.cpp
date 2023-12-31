@@ -3,6 +3,7 @@
 
 #include "CTaskManager.h"
 #include "CApplication.h"
+#include "CCollisionManager.h"
 
 #define ROTATION_YV CVector(0.0f,1.0f,0.0f) //YŽ²‚Ì‰ñ“]‘¬“x
 #define ROTATION_XV CVector(1.0f,0.0f,0.0f) //XŽ²‚Ì‰ñ“]‘¬“x
@@ -96,4 +97,16 @@ void CPlayer::Collision(CCollider* m, CCollider* o)
 			}
 		}
 	}
+}
+
+void CPlayer::Collision()
+{
+
+	mLine.ChangePriority();
+	mLine2.ChangePriority();
+	mLine3.ChangePriority();
+
+	CCollisionManager::Instance()->Collision(&mLine, COLLISIONRANGE);
+	CCollisionManager::Instance()->Collision(&mLine2, COLLISIONRANGE);
+	CCollisionManager::Instance()->Collision(&mLine3, COLLISIONRANGE);
 }

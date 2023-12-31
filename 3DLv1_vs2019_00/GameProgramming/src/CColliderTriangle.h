@@ -10,6 +10,7 @@
 class CColliderTriangle :public CCollider
 {
 public:
+	void ChangePriority();
 	CColliderTriangle() {};
 
 	//コンストラクタ(三角コライダ)

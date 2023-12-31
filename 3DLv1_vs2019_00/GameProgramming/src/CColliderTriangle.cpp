@@ -58,3 +58,11 @@ void CColliderTriangle::Render()
 	//s—ñ•œ‹A
 	glPopMatrix();
 }
+
+void CColliderTriangle::ChangePriority()
+{
+	CVector pos = (mV[0] * *mpMatrix + mV[1] * *mpMatrix
+		+ mV[2] * *mpMatrix) * (1.0f/3.0f);
+
+	CCollider::ChangePriority(pos.Length());
+}

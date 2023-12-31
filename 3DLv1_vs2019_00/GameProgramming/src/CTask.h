@@ -14,6 +14,8 @@ class CTask
 	friend CCollisionManager;
 	friend CTaskManager;
 public:
+	virtual void Collision(){}
+
 	//デフォルトコンストラクタ
 	CTask()
 		:mpNext(nullptr), mpPrev(nullptr), mPriority(0), mEnabled(true){}

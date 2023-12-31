@@ -53,3 +53,9 @@ void CColliderLine::Render()
 	//s—ñ•œ‹A
 	glPopMatrix();
 }
+
+void CColliderLine::ChangePriority()
+{
+	CVector pos = (mV[0] * *mpMatrix + mV[1] * *mpMatrix) * (0.5f);
+	CCollider::ChangePriority(pos.Length());
+}

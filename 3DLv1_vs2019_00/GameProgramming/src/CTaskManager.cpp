@@ -107,3 +107,14 @@ CTaskManager* CTaskManager::Instance()
 	}
 	return mpInstance;
 }
+
+void CTaskManager::Collision()
+{
+	CTask* task = mHead.mpNext;
+	while(task->mpNext)
+	{
+		task->Collision();
+
+		task = task->mpNext;
+	}
+}

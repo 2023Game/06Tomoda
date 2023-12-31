@@ -1,5 +1,7 @@
 #include "CBullet.h"
 #include "CCollider.h"
+#include "CCollisionManager.h"
+#include "CTaskManager.h"
 
 //幅と奥行の設定
 //Set(幅,奥行)
@@ -43,6 +45,15 @@ CBullet::CBullet()
 	:mLife(50)
 	, mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.1f)
 {}
+
+void CBullet::Collision()
+{
+	
+	mCollider.ChangePriority();
+
+	CCollisionManager::Instance()->Collision(&mCollider, COLLISIONRANGE);
+
+}
 
 //衝突処理
 //Collider(コライダ1,コライダ2)

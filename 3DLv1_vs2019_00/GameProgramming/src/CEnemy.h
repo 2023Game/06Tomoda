@@ -1,6 +1,8 @@
 #ifndef CENEMY_H
 #define CENEMY_H
 
+#include "CColliderLine.h"
+
 //キャラクタクラスのインクルード
 #include "CCharacter3.h"
 #include "CCollider.h"
@@ -12,6 +14,8 @@
 class CEnemy : public CCharacter3
 {
 public:
+	void Collision();
+
 	//衝突処理
 	//Collider(コライダ1,コライダ2)
 	void Collision(CCollider* m, CCollider* o);
@@ -31,7 +35,6 @@ private:
 	CCollider mCollider1;
     CCollider mCollider2;
 	CCollider mCollider3;
-
 };
 
 #endif // !CENEMY_H

@@ -195,3 +195,16 @@ bool CCollider::ColliderTriangleSphere(CCollider* t, CCollider* s, CVector* a)
 	//三角コライダと線分コライダの衝突処理
 	return CollisionTriangleLine(t, &line, a);
 }
+
+void CCollider::ChangePriority(int priority)
+{
+	mPriority = priority;
+	CCollisionManager::Instance()->Remove(this);
+	CCollisionManager::Instance()->Add(this);
+}
+
+void CCollider::ChangePriority()
+{
+	CVector pos = mPosition * *mpMatrix;
+	CCollider::ChangePriority(pos.Length());
+}
