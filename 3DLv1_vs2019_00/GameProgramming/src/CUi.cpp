@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "CUi.h"
+#include "CCamera.h"
 
 void CUi::Clear()
 {
@@ -27,6 +28,8 @@ CUi::CUi()
 	: mHp(0)
 	, mTime(0)
 	, mEnemy(0)
+	,mPosY(0.0f)
+	,mRotX(0.0f)
 {
 	mFont.Load("FontWhite.png", 1, 64);
 }
@@ -43,11 +46,33 @@ void CUi::Time(int time)
 
 void CUi::Render()
 {
-	char str[16];
-	sprintf(str, "TIME:%03d", mTime);
-	mFont.Draw(620, 580, 10, 20, str);
-	sprintf(str, "HP:%d", mHp);
-	mFont.Draw(20, 20, 10, 20, str);
-	sprintf(str, "ENEMY:%d", mEnemy);
-	mFont.Draw(20, 580, 10, 20, str);
+	CCamera::Start(0, 800, 0, 600);
+	glColor4f(0.0f, 1.0f, 0.0f, 0.5f);
+	char buf[64];
+
+	sprintf(buf, "PY:%7.2f", mPosY);
+	mFont.Draw(500, 330, 8, 16, buf);
+
+	sprintf(buf, "RX:%7.2f", mRotX);
+	mFont.Draw(500, 300, 8, 16, buf);
+
+	sprintf(buf, "RY:%7.2f", mRotY);
+	mFont.Draw(500, 200, 8, 16, buf);
+
+	CCamera::End();
+}
+
+void CUi::PosY(float f)
+{
+	mPosY = f;
+}
+
+void CUi::RotX(float f)
+{
+	mRotX = f;
+}
+
+void CUi::RotY(float f)
+{
+	mRotY = f;
 }

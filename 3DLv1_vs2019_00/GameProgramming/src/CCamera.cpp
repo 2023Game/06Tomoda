@@ -3,6 +3,9 @@
 
 void CCamera::Start(double left, double right, double bottom, double top)
 {
+	glPushMatrix();
+	glLoadIdentity();
+
 	//プロジェクション行列へ切り替え
 	glMatrixMode(GL_PROJECTION);
 	//プロジェクション行列の退避
@@ -11,6 +14,10 @@ void CCamera::Start(double left, double right, double bottom, double top)
 	glLoadIdentity();
 	//表示エリアの設定
 	gluOrtho2D(left, right, bottom, top);
+
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
+	glColor3f(1.0f, 1.0f, 1.0f);
 }
 
 void CCamera::End()
@@ -19,4 +26,9 @@ void CCamera::End()
 	glPopMatrix();
 	//モデルビューモードへ切り替え
 	glMatrixMode(GL_MODELVIEW);
+
+	glPopMatrix();
+
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_LIGHTING);
 }

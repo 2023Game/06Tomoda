@@ -7,6 +7,10 @@
 class CUi
 {
 public:
+	void PosY(float f);
+	void RotX(float f);
+	void RotY(float f);
+
 	//ゲームクリア表示
 	void Clear();
 	//ゲームオーバー表示
@@ -21,6 +25,10 @@ public:
 	void Time(int time);
 	void Render();
 private:
+	float mPosY;
+	float mRotX;
+	float mRotY;
+
 	int mEnemy;	//敵の数
 	int mHp;
 	int mTime;	//経過時間

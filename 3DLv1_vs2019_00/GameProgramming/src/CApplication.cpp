@@ -38,7 +38,8 @@ CVector mEye;
 
 void CApplication::Start()
 {
-	
+	spUi = new CUi();
+
 	//C5モデルの読み込み
 	mModelC5.Load(MODEL_C5);
 
@@ -141,17 +142,17 @@ void CApplication::Update()
 	mModelViewInverse.M(1, 3, 0);
 	mModelViewInverse.M(2, 3, 0);
 
-	
-	mBackGround.Render();
-	
-
 	//タスクリストの削除
 	CTaskManager::Instance()->Delete();
+
+	mBackGround.Render();
 
 	//タスクマネージャの描画
 	CTaskManager::Instance()->Render();
 
 	CCollisionManager::Instance()->Render();
+
+	spUi->Render();
 }
 
 CMatrix CApplication::mModelViewInverse;
@@ -159,4 +160,16 @@ CMatrix CApplication::mModelViewInverse;
 const CMatrix& CApplication::ModelViewInverse()
 {
 	return mModelViewInverse;
+}
+
+CUi* CApplication::spUi = nullptr;
+
+CUi* CApplication::Ui()
+{
+	return spUi;
+}
+
+CApplication::~CApplication()
+{
+	delete spUi;
 }
