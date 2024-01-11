@@ -329,7 +329,7 @@ void CModel::Render()
 }
 
 
-std::vector<CTriangle> CModel::Triangles() const
+const std::vector<CTriangle>& CModel::Triangles() const
 {
 	return mTriangles;
 }
