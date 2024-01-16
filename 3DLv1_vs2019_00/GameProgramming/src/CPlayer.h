@@ -15,7 +15,10 @@
 
 class CPlayer : public CCharacter3
 {
+	
 public:
+	static CPlayer* Instance();
+
 	void Collision();
 
 	//衝突処理
@@ -30,6 +33,8 @@ public:
 	//更新処理
 	void Update();
 private:
+	static CPlayer* spInstance;
+
 	CColliderLine mLine; //線分コライダ
 	CColliderLine mLine2;
 	CColliderLine mLine3;

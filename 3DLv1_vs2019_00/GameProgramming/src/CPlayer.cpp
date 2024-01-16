@@ -76,6 +76,7 @@ CPlayer::CPlayer()
 	, mLine2(this, & mMatrix, CVector(0.0f, 5.0f, -8.0f), CVector(0.0f, -3.0f, -8.0f))
 	, mLine3(this, &mMatrix, CVector(9.0f, 0.0f, -8.0f), CVector(-9.0f, 0.0f, -8.0f))
 {
+	spInstance = this;
 }
 
 
@@ -103,6 +104,11 @@ void CPlayer::Collision(CCollider* m, CCollider* o)
 	}
 }
 
+CPlayer* CPlayer::Instance()
+{
+	return spInstance;
+}
+
 void CPlayer::Collision()
 {
 
@@ -114,3 +120,4 @@ void CPlayer::Collision()
 	CCollisionManager::Instance()->Collision(&mLine2, COLLISIONRANGE);
 	CCollisionManager::Instance()->Collision(&mLine3, COLLISIONRANGE);
 }
+CPlayer* CPlayer::spInstance = nullptr;
