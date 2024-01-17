@@ -31,6 +31,8 @@ public:
 	void Collision();
 
 private:
+	int mHp;
+
 	//モデルデータ
 	static CModel sModel;
 
