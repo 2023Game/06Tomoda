@@ -31,6 +31,8 @@ public:
 	void Collision();
 
 private:
+	CVector mPoint;
+
 	int mHp;
 
 	//モデルデータ

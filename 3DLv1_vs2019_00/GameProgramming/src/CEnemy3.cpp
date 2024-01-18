@@ -7,6 +7,7 @@
 #define OBJ "res\\f16.obj"
 #define MTL "res\\f16.mtl"
 #define HP 3
+#define VELOCITY 0.11f
 
 CModel CEnemy3::sModel;
 
@@ -23,6 +24,8 @@ CEnemy3::CEnemy3()
 
 	//モデルのポインタ設定
 	mpModel = &sModel;
+
+	
 }
 
 CEnemy3::CEnemy3(const CVector& position, const CVector& rotation, const CVector& scale)
@@ -33,6 +36,7 @@ CEnemy3::CEnemy3(const CVector& position, const CVector& rotation, const CVector
 	mRotation = rotation;
 	mScale = scale;
 	CTransform::Update();
+	mPoint = mPosition + CVector(0.0f, 0.0f, 100.0f) * mMatrixRotate;
 }
 
 void CEnemy3::Update()
@@ -72,6 +76,47 @@ void CEnemy3::Update()
 		mPosition = mPosition - CVector(0.0f, 0.03f, 0.0f);
 		CTransform::Update();
 		return;
+	}
+
+	CVector vp = mPoint - mPosition;
+    
+	float dx = vp.Dot(mMatrixRotate.VectorX());
+	float dy = vp.Dot(mMatrixRotate.VectorY());
+	const float margin = 0.1f;
+
+	if (dx > margin)
+	{
+		mRotation = mRotation + CVector(0.0f, 1.0f, 0.0f);
+	}
+	else if (dx < -margin)
+	{
+		mRotation = mRotation + CVector(0.0f, -1.0f, 0.0f);
+	}
+
+	if (dy > margin)
+	{
+		mRotation = mRotation + CVector(-1.0f, 0.0f, 0.0f);
+	}
+	else if (dy < -margin)
+	{
+		mRotation = mRotation + CVector(1.0f, 0.0f, 0.0f);
+	}
+
+	mPosition = mPosition + mMatrixRotate.VectorZ() * VELOCITY;
+	CTransform::Update();
+
+	int r = rand() % 180;
+
+	if (r == 0)
+	{
+		if (player != nullptr)
+		{
+			mPoint = player->Position();
+		}
+		else
+		{
+			mPoint = mPoint * CMatrix().RotateY(45);
+		}
 	}
 }
 
