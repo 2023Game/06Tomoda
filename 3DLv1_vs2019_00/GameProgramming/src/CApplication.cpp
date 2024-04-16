@@ -1,5 +1,4 @@
 ﻿#include "CApplication.h"
-#include "CRectangle.h"
 //OpenGL
 #include "glut.h"
 #include "CVector.h"
@@ -9,10 +8,11 @@
 #include "CCollisionManager.h"
 #include "CBillBoard.h"
 #include "CEnemy3.h"
+#include "CUi.h"
+#include "CCamera.h"
 
 //クラスのstatic変数
 CTexture CApplication::mTexture;
-CCharacterManager CApplication::mCharacterManager;
 
 #define SOUND_BGM "res\\mario.wav" //BGM音声ファイル
 #define SOUND_OVER "res\\mdai.wav" //ゲームオーバー音声ファイル
@@ -25,10 +25,6 @@ CCharacterManager CApplication::mCharacterManager;
 
 #define MODEL_C5 "res\\c5.obj","res\\c5.mtl"
 
-CCharacterManager* CApplication::CharacterManager()
-{
-	return &mCharacterManager;
-}
 
 CTexture* CApplication::Texture()
 {
@@ -39,102 +35,25 @@ CVector mEye;
 
 void CApplication::Start()
 {
-	spUi = new CUi();
-
-	//C5モデルの読み込み
-	mModelC5.Load(MODEL_C5);
-
-	//敵機のインスタンス作成
-	new CEnemy(&mModelC5, CVector(0.0f, 10.0f, -100.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-
-	//2機目
-	new CEnemy(&mModelC5, CVector(30.0f, 10.0f, -130.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-
-	new CEnemy3(CVector(-5.0f, 1.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy3(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-
-	mEye = CVector(1.0f, 2.0f, 3.0f);
-
-	//モデルファイルの入力
-	mModel.Load(MODEL_OBJ);
-
-	mBackGround.Load(MODEL_BACKGROUND);
-
-	CMatrix matrix;
-	matrix.Print();
-
-	mPlayer.Model(&mModel);
-	mPlayer.Scale(CVector(0.1f, 0.1f, 0.1f));
-	mPlayer.Position(CVector(0.0f, 0.0f, -3.0f));
-	mPlayer.Rotation(CVector(0.0f, 180.0f, 0.0f));
-
-	//ビルボードの生成
-	new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);
-
-	mColliderMesh.Set(nullptr, nullptr, &mBackGround);
-
+	mFont.Load("FontG.png", 1, 4096 / 64);
 }
 
 
 void CApplication::Update()
 {
-	//タスクマネージャの更新
-	CTaskManager::Instance()->Update();
-
-	//コリジョンマネージャの衝突判定
-	CTaskManager::Instance()->Collision();
-
-	//頂点１，頂点２，頂点３，法線データの作成
-	CVector v0, v1, v2, n;
-	//法線を上向きで設定する
-	n.Set(0.0f, 1.0f, 0.0f);
-	//頂点1の座標を設定する
-	v0.Set(0.0f, 0.0f, 0.5f);
-	//頂点２の座標を設定する
-	v1.Set(1.0f, 0.0f, 0.0f);
-	//頂点３の座標を設定する
-	v2.Set(0.0f, 0.0f, -0.5f);
-
-	if (mInput.Key('J'))
-	{
-		mEye = mEye - CVector(0.1f, 0.0f, 0.0f);
-	}
-	if (mInput.Key('L'))
-	{
-		mEye = mEye + CVector(0.1f, 0.0f, 0.0f);
-	}
-
-	if (mInput.Key('I'))
-	{
-		mEye = mEye - CVector(0.0f, 0.0f, 0.1f);
-	}
-	if (mInput.Key('K'))
-	{
-		mEye = mEye + CVector(0.0f, 0.0f, 0.1f);
-	}
-
-	if (mInput.Key('M'))
-	{
-		mEye = mEye - CVector(0.0f, 0.1f, 0.0f);
-	}
-	if (mInput.Key('O'))
-	{
-		mEye = mEye + CVector(0.0f, 0.1f, 0.0f);
-	}
-
 	//カメラのパラメータを作成する
 	CVector e, c, u;
 
 	//視点を求める
-	e = mPlayer.Position() + CVector(-0.2f, 1.0f, -3.0f) * mPlayer.MatrixRotate();
+	e = CVector(1.0f, 2.0f, 10.0f);
 
 	//中視点を求める
-	c = mPlayer.Position();
+	c = CVector();
 
 	//上方向を求める
-	u = CVector(0, 1, 0) * mPlayer.MatrixRotate();
+	u = CVector(0.0f, 1.0f, 0.0f);
 
-	//
+	//カメラの設定
 	gluLookAt(e.X(), e.Y(), e.Z(), c.X(), c.Y(), c.Z(), u.X(), u.Y(), u.Z());
 
 	//モデルビュー行列の取得
@@ -146,17 +65,13 @@ void CApplication::Update()
 	mModelViewInverse.M(1, 3, 0);
 	mModelViewInverse.M(2, 3, 0);
 
-	//タスクリストの削除
-	CTaskManager::Instance()->Delete();
+	//２D描画開始
+	CCamera::Start(0, 800, 0, 600);
 
-	mBackGround.Render();
+	mFont.Draw(20, 20, 10, 12, "3D PROGRAMMING");
 
-	//タスクマネージャの描画
-	CTaskManager::Instance()->Render();
-
-	CCollisionManager::Instance()->Render();
-
-	spUi->Render();
+	//2Dの描画終了
+	CCamera::End();
 }
 
 CMatrix CApplication::mModelViewInverse;
