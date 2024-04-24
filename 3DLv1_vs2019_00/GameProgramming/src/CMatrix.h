@@ -10,6 +10,7 @@ class CVector;
 class CMatrix
 {
 public:
+	int Size();
 	CVector VectorZ() const;
 	CVector VectorX() const;
 	CVector VectorY() const;
@@ -67,3 +68,4 @@ private:
 	float mM[4][4];
 };
 #endif
+
