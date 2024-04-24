@@ -230,7 +230,7 @@ CModelXFrame::CModelXFrame(CModelX* model)
 		model->GetToken();
 
 		//{かっこの場合は終了
-		if (strchr(model->mToken, '{')) break;
+		if (strchr(model->mToken, '}')) break;
 
 		//新たなフレームの場合は、子フレームに追加
 		if (strcmp(model->mToken,"Frame") == 0)
