@@ -5,7 +5,7 @@
 #include"CMatrix.h"  //マトリックスクラスのインクルード
 class CModelX;       //CModelXクラスの宣言
 class CModelXFrame;     //CModelXFrameクラスの宣言
-
+class CMesh;
 #define MODEL_FILE "res\\sample.blend.x"
 
 //領域開放をマクロ化
@@ -20,6 +20,8 @@ class CModelX
 {
 	friend CModelXFrame;
 public:
+	char* Token();
+
 	~CModelX();
 
 	//ノードの読み飛ばし
@@ -57,9 +59,30 @@ public:
 	~CModelXFrame();
 
 private:
+	CMesh* mpMesh;
 	std::vector<CModelXFrame*> mChild;  //子フレームの配列
 	CMatrix mTransformMatrix;           //変換行列
 	char* mpName;                       //フレーム名
 	int mIndex;                         //フレーム番号
 
+};
+
+
+
+class CMesh
+{
+public:
+	//コンストラクタ
+	CMesh();
+
+	//デストラクタ
+	~CMesh();
+
+	//読み込み処理
+	void Init(CModelX* model);
+
+private:
+	int mVertexNum;
+	CVector* mpVertex;
+	
 };

@@ -87,3 +87,19 @@ CVector CVector::Normalize() const
 	//ベクトルの大きさで割ったベクトルを返す(長さ１のベクトル)
 	return *this * (1.0f / Length());
 }
+
+void CVector::X(float f)
+{
+	mX = f;
+}
+
+void CVector::Y(float f)
+{
+	mY = f;
+}
+
+void CVector::Z(float f)
+{
+	mZ = f;
+}
+
