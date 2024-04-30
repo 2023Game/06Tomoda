@@ -82,6 +82,8 @@ public:
 	void Init(CModelX* model);
 
 private:
+	int mNormalNum;
+	CVector* mpNormal;
 	int mFaceNum;
 	int* mpVertexIndex;
 	int mVertexNum;
