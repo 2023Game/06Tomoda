@@ -67,6 +67,24 @@ void CApplication::Update()
 	mModelViewInverse.M(1, 3, 0);
 	mModelViewInverse.M(2, 3, 0);
 
+	//X軸+回転
+	if (mInput.Key('K'))
+	{
+		mMatrix = mMatrix * CMatrix().RotateX(1);
+	}
+
+	//Y軸+回転
+	if (mInput.Key('L'))
+	{
+		mMatrix = mMatrix * CMatrix().RotateY(1);
+	}
+
+	//行列設定
+	glMultMatrixf(mMatrix.M());
+
+	//モデル描画
+	mModelX.Render();
+
 	//２D描画開始
 	CCamera::Start(0, 800, 0, 600);
 

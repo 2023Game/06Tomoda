@@ -14,10 +14,13 @@
 #include "CColliderMesh.h"
 #include "CUi.h"
 #include "CModelX.h"
+#include "CMatrix.h"
 
 class CApplication
 {
 private:
+	CMatrix mMatrix;
+
 	CModelX mModelX;
 
 	static CUi* spUi;
@@ -69,7 +72,7 @@ public:
 	//モデルビュー行列の取得
 	static const CMatrix& ModelViewInverse();
 
-	static CTaskManager* TaskManager();
+//	static CTaskManager* TaskManager();
 	static CTexture* Texture();
 	//最初に一度だけ実行するプログラム
 	void Start();

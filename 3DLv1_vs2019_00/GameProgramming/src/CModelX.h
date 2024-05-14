@@ -20,6 +20,7 @@ class CModelX
 {
 	friend CModelXFrame;
 public:
+	void Render();
 	char* Token();
 
 	~CModelX();
@@ -52,6 +53,7 @@ class CModelXFrame
 {
 	friend CModelX;
 public:
+	void Render();
 	//コンストラクタ
 	CModelXFrame(CModelX* model);
 
@@ -72,6 +74,8 @@ private:
 class CMesh
 {
 public:
+	void Render();
+
 	//コンストラクタ
 	CMesh();
 
