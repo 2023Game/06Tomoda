@@ -6,6 +6,7 @@
 class CModelX;       //CModelXクラスの宣言
 class CModelXFrame;     //CModelXFrameクラスの宣言
 class CMesh;
+class CMaterial;
 #define MODEL_FILE "res\\sample.blend.x"
 
 //領域開放をマクロ化
@@ -20,6 +21,8 @@ class CModelX
 {
 	friend CModelXFrame;
 public:
+
+	bool EOT();
 	void Render();
 	char* Token();
 
@@ -86,6 +89,11 @@ public:
 	void Init(CModelX* model);
 
 private:
+	int mMaterialNum;
+	int mMaterialIndexNum;
+	int* mpMaterialIndex;
+	std::vector<CMaterial*> mMaterial;
+
 	int mNormalNum;
 	CVector* mpNormal;
 	int mFaceNum;
