@@ -7,6 +7,7 @@ class CModelX;       //CModelXクラスの宣言
 class CModelXFrame;     //CModelXFrameクラスの宣言
 class CMesh;
 class CMaterial;
+class CSkinWeights;
 #define MODEL_FILE "res\\sample.blend.x"
 
 //領域開放をマクロ化
@@ -89,6 +90,7 @@ public:
 	void Init(CModelX* model);
 
 private:
+	std::vector<CSkinWeights*> mSkinWeights;
 	int mMaterialNum;
 	int mMaterialIndexNum;
 	int* mpMaterialIndex;
@@ -101,4 +103,27 @@ private:
 	int mVertexNum;
 	CVector* mpVertex;
 	
+};
+
+/*
+CSkinWeights
+スキンウェイトクラス
+*/
+class CSkinWeights
+{
+	friend CModelX;
+	friend CMesh;
+public:
+	CSkinWeights(CModelX* model);
+	~CSkinWeights();
+	const int& FrameIndex();
+	const CMatrix& offset();
+
+private:
+	char* mpFrameName;
+	int mFrameIndex;
+	int mIndexNum;
+	int* mpIndex;
+	float* mpWeight;
+	CMatrix mOffset;
 };
