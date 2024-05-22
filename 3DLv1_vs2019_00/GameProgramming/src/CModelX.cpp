@@ -624,5 +624,10 @@ CAnimationSet::CAnimationSet(CModelX* model)
 		}
 	}
 
+#ifdef _DEBUG
+
 	printf("AnimationSet:%s\n", mpName);
+
+#endif // _DEBUG
+
 }
