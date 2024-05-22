@@ -53,6 +53,11 @@ void CModelX::Load(char* file)
 			//ƒtƒŒ[ƒ€‚ðì¬‚·‚é
 			new CModelXFrame(this);
 		}
+		//’PŒê‚ªAnimationSet‚Ìê‡
+		else if (strcmp(mToken, "AnimationSet") == 0)
+		{
+			new CAnimationSet(this);
+		}
 
 		if (strcmp(mToken, "AnimationSet") == 0)
 		{
@@ -164,6 +169,10 @@ CModelX::~CModelX()
 	if (mFrame.size() > 0)
 	{
 		delete mFrame[0];
+	}
+	for (size_t i = 0;i < mAnimationSet.size();i++)
+	{
+		delete mAnimationSet[i];
 	}
 }
 
@@ -584,4 +593,36 @@ CSkinWeights::CSkinWeights(CModelX* model)
 
 #endif // !_DEBUG
 
+}
+
+CAnimationSet::~CAnimationSet()
+{
+	SAFE_DELETE_ARRAY(mpName);
+}
+
+/*
+CAnimationSet
+*/
+CAnimationSet::CAnimationSet(CModelX* model)
+	:mpName(nullptr)
+{
+	model->mAnimationSet.push_back(this);
+	model->GetToken();
+
+	mpName = new char[strlen(model->Token()) + 1];
+	strcpy(mpName, model->Token());
+	model->GetToken();
+
+	while (!model->EOT())
+	{
+		model->GetToken();
+		if (strchr(model->Token(), '}'))break;
+		if (strcmp(model->Token(), "Animation") == 0)
+		{
+			//‚Æ‚è‚ ‚¦‚¸“Ç‚Ý”ò‚Î‚µ
+			model->SkipNode();
+		}
+	}
+
+	printf("AnimationSet:%s\n", mpName);
 }
