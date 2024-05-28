@@ -9,6 +9,8 @@ class CMesh;
 class CMaterial;
 class CSkinWeights;
 class CAnimationSet;
+class CAnimation;
+
 #define MODEL_FILE "res\\sample.blend.x"
 
 //領域開放をマクロ化
@@ -21,9 +23,12 @@ Xファイル形式の3Dモデルデータをプログラムで認識する
 
 class CModelX
 {
+	friend CAnimation;
 	friend CAnimationSet;
 	friend CModelXFrame;
 public:
+	//フレーム名に該当するフレームのアドレスを返す
+	CModelXFrame* FindFrame(char* name);
 
 	bool EOT();
 	void Render();
@@ -60,6 +65,7 @@ private:
 //CModelXFrameクラスの定義
 class CModelXFrame
 {
+	friend CAnimation;
 	friend CModelX;
 public:
 	void Render();
@@ -68,14 +74,14 @@ public:
 
 	//デストラクタ
 	~CModelXFrame();
-
+	int Index();
 private:
 	CMesh* mpMesh;
 	std::vector<CModelXFrame*> mChild;  //子フレームの配列
 	CMatrix mTransformMatrix;           //変換行列
 	char* mpName;                       //フレーム名
 	int mIndex;                         //フレーム番号
-
+	
 };
 
 
@@ -139,10 +145,29 @@ CAnimationSet
 */
 class CAnimationSet
 {
+
 public:
 	CAnimationSet(CModelX* model);
 	~CAnimationSet();
 private:
 	//アニメーションセット名
 	char* mpName;
+
+	//アニメーション
+	std::vector<CAnimation*> mAnimation;
+};
+
+/*
+CAnimation
+アニメーションクラス
+*/
+class CAnimation
+{
+	friend CAnimationSet;
+public:
+	CAnimation(CModelX* model);
+	~CAnimation();
+private:
+	char* mpFrameName;
+	int mFrameIndex;
 };

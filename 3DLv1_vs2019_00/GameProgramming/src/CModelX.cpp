@@ -598,6 +598,13 @@ CSkinWeights::CSkinWeights(CModelX* model)
 CAnimationSet::~CAnimationSet()
 {
 	SAFE_DELETE_ARRAY(mpName);
+
+
+	//アニメーション要素の削除
+	for (size_t i = 0;i < mAnimation.size();i++)
+	{
+		delete mAnimation[i];
+	}
 }
 
 /*
@@ -619,8 +626,9 @@ CAnimationSet::CAnimationSet(CModelX* model)
 		if (strchr(model->Token(), '}'))break;
 		if (strcmp(model->Token(), "Animation") == 0)
 		{
-			//とりあえず読み飛ばし
-			model->SkipNode();
+			//Animation要素の読み込み
+			mAnimation.push_back(new CAnimation(model));
+			
 		}
 	}
 
@@ -631,3 +639,79 @@ CAnimationSet::CAnimationSet(CModelX* model)
 #endif // _DEBUG
 
 }
+
+CAnimation::~CAnimation()
+{
+	SAFE_DELETE_ARRAY(mpFrameName);
+
+}
+
+/*
+FindFrame(フレーム名)
+フレーム名に該当するフレームのアドレスを返す
+*/
+CModelXFrame* CModelX::FindFrame(char* name)
+{
+	//イテレータの作成
+	std::vector<CModelXFrame*>::iterator itr;
+
+	//先頭から最後まで繰り返す
+	for (itr = mFrame.begin();itr != mFrame.end();itr++)
+	{
+		//名前が一致したか
+		if (strcmp(name, (*itr)->mpName) == 0)
+		{
+			//一致したらそのアドレスを返す
+			return *itr;
+		}
+	}
+	//一致するフレームがない場合はnullptrを返す
+	return nullptr;
+}
+
+int CModelXFrame::Index()
+{
+	return mIndex;
+}
+
+CAnimation::CAnimation(CModelX* model)
+	:mpFrameName(nullptr)
+	, mFrameIndex(0)
+{
+	model->GetToken();
+	if (strchr(model->Token(), '{'))
+	{
+		model->GetToken();
+	}
+	else
+	{
+		model->GetToken();
+		model->GetToken();
+	}
+
+	model->GetToken();
+	mpFrameName = new char[strlen(model->Token()) + 1];
+	strcpy(mpFrameName, model->Token());
+	mFrameIndex = model->FindFrame(model->Token())->Index();
+	model->GetToken();
+
+	while (!model->EOT())
+	{
+		model->GetToken();
+		if (strchr(model->Token(), '}')) break;
+		if (strcmp(model->Token(), "AnimationKey") == 0)
+		{
+			model->SkipNode();
+		}
+	}
+
+#ifdef _DEBUG
+
+	printf("Animation:%s\n", mpFrameName);
+
+#endif // _DEBUG
+
+}
+
+
+
