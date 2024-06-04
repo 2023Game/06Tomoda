@@ -10,6 +10,9 @@ class CVector;
 class CMatrix
 {
 public:
+	//クオータニオンで回転行列を設定する
+	CMatrix Quaternion(float x, float y, float z, float w);
+
 	int Size();
 	CVector VectorZ() const;
 	CVector VectorX() const;

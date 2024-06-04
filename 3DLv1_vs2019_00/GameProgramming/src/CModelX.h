@@ -10,11 +10,15 @@ class CMaterial;
 class CSkinWeights;
 class CAnimationSet;
 class CAnimation;
+class CAnimationKey;
 
 #define MODEL_FILE "res\\sample.blend.x"
 
 //領域開放をマクロ化
 #define SAFE_DELETE_ARRAY(a){if(a) delete[] a;a = nullptr;}
+
+//配列のサイズ取得をマクロ化
+#define ARRAY_SIZE(a)(sizeof(a)/sizeof(a[0]))
 
 /*
 CModelX
@@ -168,6 +172,24 @@ public:
 	CAnimation(CModelX* model);
 	~CAnimation();
 private:
+	int mKeyNum;
+	CAnimationKey* mpKey;
 	char* mpFrameName;
 	int mFrameIndex;
+};
+
+/*
+CAnimationKey
+アニメーションキークラス
+*/
+class CAnimationKey
+{
+	friend CAnimation;
+	friend CAnimationSet;
+private:
+	//時間
+	float mTime;
+
+	//行列
+	CMatrix mMatrix;
 };
