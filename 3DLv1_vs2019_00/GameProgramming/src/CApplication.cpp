@@ -43,6 +43,15 @@ void CApplication::Start()
 
 void CApplication::Update()
 {
+	//最初のアニメーションの現在時間を４５にする
+	mModelX.AnimationSet()[0]->Time(45);
+
+	//最初のアニメーションの重みを1.0(100%)にする
+	mModelX.AnimationSet()[0]->Weight(1.0f);
+
+	//フレームの変換行列をアニメーションで更新する
+	mModelX.AnimationFrame();
+
 	//カメラのパラメータを作成する
 	CVector e, c, u;
 

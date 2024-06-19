@@ -31,8 +31,12 @@ class CModelX
 	friend CAnimationSet;
 	friend CModelXFrame;
 public:
+	void AnimationFrame();
+
 	//フレーム名に該当するフレームのアドレスを返す
 	CModelXFrame* FindFrame(char* name);
+
+	std::vector<CAnimationSet*>& AnimationSet();
 
 	bool EOT();
 	void Render();
@@ -52,6 +56,8 @@ public:
 	void Load(char* file);
 
 private:
+	std::vector<CAnimationSet*> Animation;
+
 	//アニメーションセットの配列
 	std::vector<CAnimationSet*> mAnimationSet;
 
@@ -69,9 +75,11 @@ private:
 //CModelXFrameクラスの定義
 class CModelXFrame
 {
+	friend CAnimationSet;
 	friend CAnimation;
 	friend CModelX;
 public:
+	
 	void Render();
 	//コンストラクタ
 	CModelXFrame(CModelX* model);
@@ -149,11 +157,20 @@ CAnimationSet
 */
 class CAnimationSet
 {
-
+	friend CModelX;
 public:
+	void AnimateMatrix(CModelX* model);
+	std::vector<CAnimation*>& Animation();
+	void Time(float time);
+	void Weight(float weight);
 	CAnimationSet(CModelX* model);
 	~CAnimationSet();
 private:
+
+	float mTime;
+	float mWeight;
+	float mMaxTime;
+
 	//アニメーションセット名
 	char* mpName;
 
@@ -167,6 +184,7 @@ CAnimation
 */
 class CAnimation
 {
+	friend CModelX;
 	friend CAnimationSet;
 public:
 	CAnimation(CModelX* model);
