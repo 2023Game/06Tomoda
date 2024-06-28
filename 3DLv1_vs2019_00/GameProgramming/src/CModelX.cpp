@@ -277,11 +277,6 @@ CModelXFrame::CModelXFrame(CModelX* model)
 			model->SkipNode();
 		}
 	}
-	//デバックバージョンのみ有効
-#ifdef _DEBUG
-	printf("%s\n", mpName);
-	mTransformMatrix.Print();
-#endif // _DEBUG
 
 }
 
@@ -450,28 +445,6 @@ void CMesh::Init(CModelX* model)
 			model->SkipNode();
 		}
 	}
-
-#ifdef _DEBUG
-	
-
-	printf("NormalNum:%d\n", mNormalNum);
-	for (int i = 0;i < mNormalNum;i++)
-	{
-		printf("%10f %10f %10f\n", mpNormal[i].X(), mpNormal[i].Y(), mpNormal[i].Z());
-	}
-
-	printf("FaceNum:%d\n", mFaceNum);
-	for (int i = 0;i < mFaceNum * 3;i += 3)
-	{
-		printf(" %d %d %d\n", mpVertexIndex[i], mpVertexIndex[i + 1], mpVertexIndex[i + 2]);
-	}
-
-	printf("VertexNum:%d\n", mVertexNum);
-	for (int i = 0;i < mVertexNum;i++)
-	{
-		printf("%10f %10f %10f\n", mpVertex[i].X(), mpVertex[i].Y(), mpVertex[i].Z());
-	}
-#endif // _DEBUG
 }
 
 /*
@@ -592,14 +565,6 @@ CSkinWeights::CSkinWeights(CModelX* model)
 	}
 	model->GetToken();
 
-#ifdef _DEBUG
-	printf("SkinWeights %s\n", mpFrameName);
-	for (int i = 0; i < mIndexNum; i++) {
-		printf("%3d %10f\n", mpIndex[i], mpWeight[i]);
-	}
-	mOffset.Print();
-
-#endif // !_DEBUG
 
 }
 
@@ -644,11 +609,6 @@ CAnimationSet::CAnimationSet(CModelX* model)
 		
 	}
 
-#ifdef _DEBUG
-
-	printf("AnimationSet:%s\n", mpName);
-
-#endif // _DEBUG
 
 	//終了時間設定
 	mMaxTime = mAnimation[0]->mpKey[mAnimation[0]->mKeyNum - 1].mTime;
@@ -822,12 +782,6 @@ CAnimation::CAnimation(CModelX* model)
 		SAFE_DELETE_ARRAY(key[i]);
 	}
 
-#ifdef _DEBUG
-
-	printf("Animation:%s\n", mpFrameName);
-
-	mpKey[0].mMatrix.Print();
-#endif // _DEBUG
 
 }
 
@@ -936,15 +890,7 @@ void CModelX::AnimationFrame()
 	}
 
 	
-#ifdef _DEBUG
 
-	for (size_t i = 0; i < mFrame.size(); i++)
-	{
-		printf("Frame:%s\n", mFrame[i]->mpName);
-		mFrame[i]->mTransformMatrix.Print();
-	}
-	
-#endif // _DEBUG
 }
 
 const CMatrix& CModelXFrame::CombinedMatrix()
@@ -967,10 +913,7 @@ void CModelXFrame::AnimateCombined(CMatrix* parent)
 		mChild[i]->AnimateCombined(&mCombinedMatrix);
 	}
 
-#ifdef _DEBUG
-	printf("Frame::%s\n", mpName);
-	mCombinedMatrix.Print();
-#endif
+
 }
 
 std::vector<CModelXFrame*>& CModelX::Frames()
