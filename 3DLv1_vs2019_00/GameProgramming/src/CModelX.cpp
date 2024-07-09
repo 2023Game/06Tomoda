@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "CModelX.h"
+#include "CMaterial.h"
 #include "glut.h"
 
 CModelX::CModelX()
@@ -47,8 +48,19 @@ void CModelX::Load(char* file)
 	while (*mpPointer != '\0')
 	{
 		GetToken();   //単語の取得
+
+		//template 読み飛ばし
+		if (strcmp(mToken, "template") == 0)
+		{
+			SkipNode();
+		}
+		//Materialの時
+		else if (strcmp(mToken, "Material") == 0)
+		{
+			new CMaterial(this);
+		}
 		//単語がFrameの場合
-		if (strcmp(mToken, "Frame") == 0)
+		else if (strcmp(mToken, "Frame") == 0)
 		{
 			//フレームを作成する
 			new CModelXFrame(this);
@@ -129,6 +141,10 @@ char* CModelX::GetToken()
 
 bool CModelX::IsDelimiter(char c)
 {
+	//cが0より小さいとき、falseを返す
+	if (c < 0)
+		return false;
+
 	//isspace(c)
 	//cが空白文字なら0以外を返す
 	if (isspace(c) != 0)
@@ -168,6 +184,12 @@ CModelXFrame::~CModelXFrame()
 
 CModelX::~CModelX()
 {
+	//マテリアルの解放
+	for (size_t i = 0;i < mMaterial.size();i++)
+	{
+		delete mMaterial[i];
+	}
+
 	if (mFrame.size() > 0)
 	{
 		delete mFrame[0];
@@ -430,6 +452,12 @@ void CMesh::Init(CModelX* model)
 				if (strcmp(model->Token(), "Material") == 0)
 				{
 					mMaterial.push_back(new CMaterial(model));
+				}
+				else
+				{
+					model->GetToken();
+					mMaterial.push_back(model->FindMaterial(model->Token()));
+					model->GetToken();
 				}
 			}
 			model->GetToken();
@@ -1010,4 +1038,27 @@ float CAnimationSet::Time()
 float CAnimationSet::MaxTime()
 {
 	return mMaxTime;
+}
+
+CMaterial* CModelX::FindMaterial(char* name)
+{
+	//マテリアル配列のイテレータ作成
+	std::vector<CMaterial*>::iterator itr;
+
+	//マテリアル配列を先頭から順に検索
+	for (itr = mMaterial.begin(); itr != mMaterial.end();itr++)
+	{
+		//名前が一致すればマテリアルのポインタを返却
+		if (strcmp(name, (*itr)->Name()) == 0)
+		{
+			return *itr;
+		}
+	}
+	//ないときはnullptrを返却
+	return nullptr;
+}
+
+std::vector<CMaterial*>& CModelX::Material()
+{
+	return mMaterial;
 }

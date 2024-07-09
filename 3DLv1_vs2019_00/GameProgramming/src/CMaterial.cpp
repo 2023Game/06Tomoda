@@ -62,6 +62,7 @@ char* CMaterial::Name()
 {
 	return mName;
 }
+
 //マテリアルの名前を設定する
 //Name(マテリアルの名前)
 void CMaterial::Name(char* name)
@@ -108,6 +109,8 @@ CTexture* CMaterial::Texture()
 	return &mTexture;
 }
 
+
+
 CMaterial::~CMaterial()
 {
 	if (mpTextureFilename)
@@ -123,6 +126,9 @@ Materialデータの読み込みと設定
 CMaterial::CMaterial(CModelX* model)
 	:mpTextureFilename(nullptr)
 {
+	//CModelXにマテリアルを追加する
+	model->Material().push_back(this);
+
 	model->GetToken();
 	if (strcmp(model->Token(), "{") != 0)
 	{
@@ -158,3 +164,5 @@ CMaterial::CMaterial(CModelX* model)
 		model->GetToken();
 	}
 }
+
+	
