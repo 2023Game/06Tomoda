@@ -320,6 +320,7 @@ CMesh::CMesh()
 	,mpMaterialIndex(nullptr)
 	,mpAnimationVertex(nullptr)
 	,mpAnimationNormal(nullptr)
+	,mpTextureCoords(nullptr)
 {}
 
 //デストラクタ
@@ -330,6 +331,7 @@ CMesh::~CMesh()
 	SAFE_DELETE_ARRAY(mpMaterialIndex);
 	SAFE_DELETE_ARRAY(mpAnimationVertex);
 	SAFE_DELETE_ARRAY(mpAnimationNormal);
+	SAFE_DELETE_ARRAY(mpTextureCoords);
 
 	for (size_t i = 0;i < mSkinWeights.size();i++)
 	{
@@ -468,6 +470,23 @@ void CMesh::Init(CModelX* model)
 			//CSkinWeightsクラスのインスタンスを作成し、配列に追加
 			mSkinWeights.push_back(new CSkinWeights(model));
 		}
+		//テクスチャ座標のとき
+		else if (strcmp(model->Token(), "MeshTextureCoords") == 0)
+		{
+			model->GetToken();
+
+			//テクスチャ座標数を取得
+			int textureCoordsNum = atoi(model->GetToken()) * 2;
+
+			//テクスチャ座標のデータを配列に取り込む
+			mpTextureCoords = new float[textureCoordsNum];
+
+			for (int i = 0;i < textureCoordsNum;i++)
+			{
+				mpTextureCoords[i] = atof(model->GetToken());
+			}
+			model->GetToken();
+		}
 		else
 		{
 			model->SkipNode();
@@ -485,9 +504,13 @@ void CMesh::Render()
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
 
+	//テクスチャマッピングの配列を有効にする
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
 	/*頂点データ、法線データの場所を指定する*/
 	glVertexPointer(3, GL_FLOAT, 0, mpAnimationVertex);
 	glNormalPointer(GL_FLOAT, 0, mpAnimationNormal);
+	glTexCoordPointer(2, GL_FLOAT, 0, mpTextureCoords);
 
 	/*頂点のインデックスの場所を指定して図形を描画する*/
 	for (int i = 0; i < mFaceNum;i++)
@@ -495,6 +518,7 @@ void CMesh::Render()
 		//マテリアルを適用する
 		mMaterial[mpMaterialIndex[i]]->Enabled();
 		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (mpVertexIndex + i * 3));
+		mMaterial[mpMaterialIndex[i]]->Disabled();
 	}
 
 	/*頂点データ、法線データの配列を無効にする*/

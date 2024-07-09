@@ -141,6 +141,9 @@ public:
 	void Init(CModelX* model);
 
 private:
+	//テクスチャ座標データ
+	float* mpTextureCoords;
+
 	CVector* mpAnimationVertex; //アニメーション用頂点
 	CVector* mpAnimationNormal; //アニメーション用法線
 
