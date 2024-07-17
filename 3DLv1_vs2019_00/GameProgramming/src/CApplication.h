@@ -16,12 +16,13 @@
 #include "CModelX.h"
 #include "CMatrix.h"
 #include "CXCharacter.h"
+#include "CXPlayer.h"
 
 class CApplication
 {
 private:
 	//キャラクタのインスタンス
-	CXCharacter mCharacter;
+	CXPlayer mXPlayer;
 
 	CMatrix mMatrix;
 

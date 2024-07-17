@@ -109,3 +109,18 @@ int CXCharacter::AnimationIndex()
 {
 	return mAnimationIndex;
 }
+
+//更新処理
+void CXCharacter::Update()
+{
+	//変換行列の更新
+	CTransform::Update();
+
+	//アニメーションを更新する
+	Update(mMatrix);
+}
+
+CXCharacter::CXCharacter()
+{
+	mScale = CVector(1.0f, 1.0f, 1.0f);
+}

@@ -2,6 +2,7 @@ c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\vc142.p
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\vc142.idb
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\csound.obj
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\cplayer.obj
+c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\cmodelx.obj
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\cmodel.obj
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\cmatrix.obj
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\cmaterial.obj
@@ -18,8 +19,8 @@ c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\ccharac
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\ccamera.obj
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\cbullet.obj
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\cbillboard.obj
-c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\capplication.obj
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\main.obj
+c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\cxcharacter.obj
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\cvector.obj
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\cui.obj
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\ctriangle.obj
@@ -27,6 +28,7 @@ c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\ctransf
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\cinput.obj
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\ctexture.obj
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\ctaskmanager.obj
+c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\capplication.obj
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\gameprogramming.tlog\cl.command.1.tlog
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\gameprogramming.tlog\cl.read.1.tlog
 c:\users\yuki\desktop\git\06tomoda\3dlv1_vs2019_00\gameprogramming\debug\gameprogramming.tlog\cl.write.1.tlog

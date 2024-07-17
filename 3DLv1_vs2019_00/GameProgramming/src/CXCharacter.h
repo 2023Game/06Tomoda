@@ -5,10 +5,16 @@
 
 #include "CModelX.h"
 #include "CMatrix.h"
+#include "CCharacter3.h"
+#include "CInput.h"
 
-class CXCharacter
+class CXCharacter:public CCharacter3
 {
 public:
+	CXCharacter();
+
+	void Update();
+
 	//‰Šú‰»ˆ—
 	void Init(CModelX* model);
 
