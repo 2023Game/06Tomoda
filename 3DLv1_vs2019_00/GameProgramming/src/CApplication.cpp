@@ -117,6 +117,9 @@ void CApplication::Update()
 	//敵描画
 	mXEnemy.Render();
 
+	//コライダの描画
+	CCollisionManager::Instance()->Render();
+	
 	//２D描画開始
 	CCamera::Start(0, 800, 0, 600);
 

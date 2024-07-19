@@ -15,6 +15,8 @@ class CCollider : public CTransform,public CTask
 {
 	friend CCollisionManager;
 public:
+	void Matrix(CMatrix* m);
+	//”¼Œa
 	virtual void ChangePriority();
 
 	void ChangePriority(int priority);
@@ -67,6 +69,7 @@ protected:
 
 	CCharacter3* mpParent; //e
 	CMatrix* mpMatrix;     //es—ñ
-	float mRadius;         //”¼Œa
+	float mRadius;
+	
 };
 #endif // !CCOLLIDER_H

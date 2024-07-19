@@ -208,3 +208,8 @@ void CCollider::ChangePriority()
 	CVector pos = mPosition * *mpMatrix;
 	CCollider::ChangePriority(pos.Length());
 }
+
+void CCollider::Matrix(CMatrix* m)
+{
+	mpMatrix = m;
+}
