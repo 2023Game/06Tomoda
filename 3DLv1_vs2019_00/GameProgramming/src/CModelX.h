@@ -32,6 +32,8 @@ class CModelX
 	friend CAnimationSet;
 	friend CModelXFrame;
 public:
+	void AnimateVertex(CMatrix*);
+
 	//マテリアル配列の取得
 	std::vector<CMaterial*>& Material();
 
@@ -123,6 +125,7 @@ private:
 class CMesh
 {
 public:
+	void AnimateVertex(CMatrix*);
 	//頂点にアニメーション適用
 	void AnimateVertex(CModelX* model);
 

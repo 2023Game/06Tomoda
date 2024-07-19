@@ -17,10 +17,14 @@
 #include "CMatrix.h"
 #include "CXCharacter.h"
 #include "CXPlayer.h"
+#include "CXEnemy.h"
 
 class CApplication
 {
 private:
+	//敵のインスタンス
+	CXEnemy mXEnemy;
+
 	//キャラクタのインスタンス
 	CXPlayer mXPlayer;
 
@@ -70,6 +74,7 @@ private:
 	//CCharacterのポインタの可変長配列
 //	std::vector<CCharacter*> mCharacters;
 public:
+	
 	~CApplication();
 
 	static CUi* Ui();

@@ -11,6 +11,11 @@
 class CXCharacter:public CCharacter3
 {
 public:
+	virtual ~CXCharacter()
+	{
+		SAFE_DELETE_ARRAY(mpCombinedMatrix);
+	}
+
 	CXCharacter();
 
 	void Update();
@@ -33,6 +38,7 @@ public:
 	int AnimationIndex();             //アニメーション番号の取得
 
 protected:
+	CMatrix* mpCombinedMatrix; //合成行列退避
 	CModelX* mpModel; //モデルデータ
 	int mAnimationIndex; //アニメーション番号
 	bool mAnimationLoopFlg; //true:アニメーションを繰り返す
