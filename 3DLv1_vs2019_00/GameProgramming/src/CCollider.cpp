@@ -3,9 +3,11 @@
 #include "CColliderLine.h"
 
 CCollider::CCollider(CCharacter3* parent, CMatrix* matrix,
-	const CVector& position, float radius)
+	const CVector& position, float radius,ETag tag)
 	:CCollider()
 {
+	mTag = tag;
+
 	//親設定
 	mpParent = parent;
 
@@ -166,12 +168,6 @@ bool CCollider::CollisionTriangleLine(CCollider* t, CCollider* l, CVector* a)
 	}
 	return true;
 }
-
-CCollider::EType CCollider::Type()
-{
-	return mType;
-}
-
 //ColliderTriangleSphere(三角コライダ,球コライダ,調節値)
 	//return:true(衝突してる)false(衝突していない)
 	//調節値:衝突しない位置まで戻す値
@@ -213,3 +209,15 @@ void CCollider::Matrix(CMatrix* m)
 {
 	mpMatrix = m;
 }
+
+CCollider::ETag CCollider::Tag()
+{
+	return mTag;
+}
+
+
+CCollider::EType CCollider::Type()
+{
+	return mType;
+}
+

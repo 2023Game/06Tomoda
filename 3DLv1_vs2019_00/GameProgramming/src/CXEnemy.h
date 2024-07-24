@@ -5,6 +5,8 @@
 class CXEnemy :public CXCharacter
 {
 public:
+    void Collision(CCollider* m, CCollider* o);
+
     void Init(CModelX* model);
     CXEnemy();
 private:
