@@ -35,6 +35,8 @@ CVector mEye;
 
 void CApplication::Start()
 {
+	mKnight.Load("res\\knight\\knight_low.X");
+
 	//3Dモデルファイルの読み込み
 	mModelX.Load(MODEL_FILE);
 
@@ -42,7 +44,7 @@ void CApplication::Start()
 	mXPlayer.Init(&mModelX);
 	
 	//敵の初期設定
-	mXEnemy.Init(&mModelX);
+	mXEnemy.Init(&mKnight);
 
 	//敵の配置
 	mXEnemy.Position(CVector(7.0f, 0.0f, 0.0f));

@@ -97,6 +97,8 @@ class CModelXFrame
 	friend CAnimation;
 	friend CModelX;
 public:
+	CModelXFrame();
+
 	const CMatrix& CombinedMatrix();
 
 	//‡¬s—ñ‚Ìì¬
