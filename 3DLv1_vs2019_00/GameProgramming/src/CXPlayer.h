@@ -3,7 +3,7 @@
 #ifndef CXPLAYER_H
 #define CXPLAYER_H
 #include <vector>
-#include "CXCharacter.h""
+#include "CXCharacter.h"
 #include "CInput.h"
 #include "CCollider.h"
 class CXPlayer:public CXCharacter
