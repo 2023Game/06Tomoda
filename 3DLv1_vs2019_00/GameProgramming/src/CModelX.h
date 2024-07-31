@@ -32,6 +32,11 @@ class CModelX
 	friend CAnimationSet;
 	friend CModelXFrame;
 public:
+	//アニメーションセットの追加
+	void AddAnimationSet(const char* file);
+
+	bool IsLoaded();
+
 	/*
 	アニメーションを抜き出す
 	idx:分割したいアニメーションセット
@@ -81,6 +86,8 @@ public:
 	void Load(char* file);
 
 private:
+	bool mLoaded;
+
 	std::vector<CMaterial*> mMaterial; //マテリアル配列
 
 	std::vector<CAnimationSet*> Animation;

@@ -63,6 +63,11 @@ void CApplication::Start()
 	mFont.Load("FontG.png", 1, 4096 / 64);
 
 	mXEnemy.ChangeAnimation(2, true, 200);
+
+	mpPaladin = new CPaladin();
+	mpPaladin->Position(CVector(-1.0f, 0.0f, 5.0f));
+
+	mpPaladin->ChangeAnimation(1, true, 60);
 }
 
 
@@ -77,6 +82,8 @@ void CApplication::Update()
 	//敵の更新
 	mXEnemy.Update();
 	
+	mpPaladin->Update();
+
 	//カメラのパラメータを作成する
 	CVector e, c, u;
 
@@ -135,6 +142,8 @@ void CApplication::Update()
 
 	//敵描画
 	mXEnemy.Render();
+
+	mpPaladin->Render();
 
 	//コライダの描画
 	CCollisionManager::Instance()->Render();
