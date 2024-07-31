@@ -11,6 +11,7 @@
 */
 class CMaterial
 {
+	friend CMyShader;
 public:
 	CMaterial(CModelX* model);
 	~CMaterial();

@@ -3,6 +3,7 @@
 #define CMODELX_H
 #include <vector>    //Vectorクラスのインクルード(動的配列)
 #include"CMatrix.h"  //マトリックスクラスのインクルード
+#include "CMyShader.h" //シェーダーのインクルード
 
 class CModelX;       //CModelXクラスの宣言
 class CModelXFrame;     //CModelXFrameクラスの宣言
@@ -28,10 +29,14 @@ Xファイル形式の3Dモデルデータをプログラムで認識する
 
 class CModelX
 {
+	friend CMyShader;
 	friend CAnimation;
 	friend CAnimationSet;
 	friend CModelXFrame;
 public:
+	//シェーダーを使った描画
+	void RenderShader(CMatrix* m);
+
 	//アニメーションセットの追加
 	void AddAnimationSet(const char* file);
 
@@ -86,6 +91,10 @@ public:
 	void Load(char* file);
 
 private:
+	//シェーダー用スキンマトリックス
+	CMatrix* mpSkinningMatrix;
+	CMyShader mShader; //シェーダーのインスタンス
+
 	bool mLoaded;
 
 	std::vector<CMaterial*> mMaterial; //マテリアル配列
@@ -109,6 +118,7 @@ private:
 //CModelXFrameクラスの定義
 class CModelXFrame
 {
+	friend CMyShader;
 	friend CAnimationSet;
 	friend CAnimation;
 	friend CModelX;
@@ -142,7 +152,11 @@ private:
 
 class CMesh
 {
+	friend CMyShader;
 public:
+	//頂点バッファの作成
+	void CreateVertexBuffer();
+
 	void AnimateVertex(CMatrix*);
 	//頂点にアニメーション適用
 	void AnimateVertex(CModelX* model);
@@ -162,6 +176,12 @@ public:
 	void Init(CModelX* model);
 
 private:
+	//マテエリアル毎の面数
+	std::vector<int> mMaterialVertexCount;
+
+	//頂点バッファ識別子
+	GLuint mMyVertexBufferId;
+
 	//テクスチャ座標データ
 	float* mpTextureCoords;
 
@@ -189,6 +209,7 @@ CSkinWeights
 */
 class CSkinWeights
 {
+	friend CMyShader;
 	friend CModelX;
 	friend CMesh;
 public:
