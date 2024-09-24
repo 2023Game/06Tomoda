@@ -101,6 +101,8 @@ void CApplication::Update()
 	mModelViewInverse.M(1, 3, 0);
 	mModelViewInverse.M(2, 3, 0);
 
+
+
 	//頂点にアニメーションを適用する
 	mModelX.AnimateVertex();
 
