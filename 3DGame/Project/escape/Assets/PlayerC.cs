@@ -54,9 +54,6 @@ public class PlayerC : MonoBehaviour
             this.rigid.AddForce(transform.forward * keyz * this.walkForce);
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            transform.rotation = Quaternion.Euler(0, 90, 0);
-        }
+        
     }
 }
