@@ -30,30 +30,20 @@ public class PlayerC : MonoBehaviour
         int keyz = 0;
 
         //前後左右移動
-        if (Input.GetKey(KeyCode.D))
-        {
-            keyx = 1;
-        }
+        if (Input.GetKey(KeyCode.D)) keyx = 1;
         if (Input.GetKey(KeyCode.A)) keyx = -1;
 
         if (Input.GetKey(KeyCode.W)) keyz = 1;
         if (Input.GetKey(KeyCode.S)) keyz = -1;
 
-        //プレイヤーの速度
-        float speedx = Mathf.Abs(this.rigid.velocity.x);
-        float speedz = Mathf.Abs(this.rigid.velocity.z);
 
-        //スピード制限
-        if (speedx < this.maxWalkSpeed)
+        float speed = this.rigid.velocity.magnitude;
+
+        if (speed < this.maxWalkSpeed)
         {
             this.rigid.AddForce(transform.right * keyx * this.walkForce);
-        }
-
-        if (speedz < this.maxWalkSpeed)
-        {
             this.rigid.AddForce(transform.forward * keyz * this.walkForce);
         }
 
-        
     }
 }
