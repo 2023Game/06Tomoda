@@ -6,8 +6,9 @@ public class PlayerC : MonoBehaviour
 {
     Rigidbody rigid;
     float jumpForce = 120.0f;
-    float walkForce = 30.0f;
+    float walkForce = 40.0f;
     float maxWalkSpeed = 2.0f;
+    int i = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -45,5 +46,17 @@ public class PlayerC : MonoBehaviour
             this.rigid.AddForce(transform.forward * keyz * this.walkForce);
         }
 
+        
+
+        //‰ñ“]
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            transform.Rotate(new Vector3(0, 90, 0));
+        }
+        if (Input.GetKeyDown(KeyCode.A)) 
+        {
+            transform.Rotate(new Vector3(0, -90, 0));
+        }
+        
     }
 }
