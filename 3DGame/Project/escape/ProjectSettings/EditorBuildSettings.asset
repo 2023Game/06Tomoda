@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Game.unity
+    guid: 48cee01dbc621294899f9d5f54bcde4b
+  - enabled: 1
+    path: Assets/Tana.unity
+    guid: 66aa2ce76bfdd2e4882ff11387f0390e
+  - enabled: 1
+    path: Assets/Menu.unity
+    guid: 79ce2a94d73f8424da0ffcedc0d015e8
   m_configObjects: {}

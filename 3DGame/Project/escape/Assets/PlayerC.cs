@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerC : MonoBehaviour
 {
+    [SerializeField] GameObject target;
+
     Rigidbody rigid;
     float jumpForce = 120.0f;
-    float walkForce = 40.0f;
-    float maxWalkSpeed = 2.0f;
-    int i = 0;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.Find("Main Camera");
         Application.targetFrameRate = 60;
         this.rigid = GetComponent<Rigidbody>();
     }
@@ -20,6 +22,9 @@ public class PlayerC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    
+        Transform myTransform = this.transform;
+
         //ジャンプする
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
@@ -27,36 +32,246 @@ public class PlayerC : MonoBehaviour
             this.rigid.AddForce(transform.up * this.jumpForce);
         }
 
-        int keyx = 0;
-        int keyz = 0;
-
         //前後左右移動
-        if (Input.GetKey(KeyCode.D)) keyx = 1;
-        if (Input.GetKey(KeyCode.A)) keyx = -1;
-
-        if (Input.GetKey(KeyCode.W)) keyz = 1;
-        if (Input.GetKey(KeyCode.S)) keyz = -1;
-
-
-        float speed = this.rigid.velocity.magnitude;
-
-        if (speed < this.maxWalkSpeed)
+        //カメラの位置が（9,6,-10）の時
+        if (target.transform.position.z == -10)
         {
-            this.rigid.AddForce(transform.right * keyx * this.walkForce);
-            this.rigid.AddForce(transform.forward * keyz * this.walkForce);
+            if (target.transform.position.x == 9)
+            {
+                if (Input.GetKey(KeyCode.D))
+                {
+                    transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+                }
+                if (Input.GetKeyDown(KeyCode.D))
+                {
+                    Vector3 localAngle = myTransform.localEulerAngles;
+                    localAngle.y = 90;
+
+                    myTransform.localEulerAngles = localAngle;
+                }
+
+                if (Input.GetKey(KeyCode.A))
+                {
+                    transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+                }
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    Vector3 localAngle = myTransform.localEulerAngles;
+                    localAngle.y = -90;
+
+                    myTransform.localEulerAngles = localAngle;
+                }
+
+                if (Input.GetKey(KeyCode.W))
+                {
+                    transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+                }
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    Vector3 localAngle = myTransform.localEulerAngles;
+                    localAngle.y = 0;
+
+                    myTransform.localEulerAngles = localAngle;
+                }
+
+                if (Input.GetKey(KeyCode.S))
+                {
+                    transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+                }
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    Vector3 localAngle = myTransform.localEulerAngles;
+                    localAngle.y = 180;
+
+                    myTransform.localEulerAngles = localAngle;
+                }
+            }
         }
 
-        
 
-        //回転
-        if (Input.GetKeyDown(KeyCode.D))
+        //カメラの座標が（0,6,0）の時
+        if (target.transform.position.z == 0)
         {
-            transform.Rotate(new Vector3(0, 90, 0));
+            if (target.transform.position.x == 0)
+            {
+                if (Input.GetKey(KeyCode.D))
+                {
+                    transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+                }
+                if (Input.GetKeyDown(KeyCode.D))
+                {
+                    Vector3 localAngle = myTransform.localEulerAngles;
+                    localAngle.y = 180;
+
+                    myTransform.localEulerAngles = localAngle;
+                }
+
+                if (Input.GetKey(KeyCode.A))
+                {
+                    transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+                }
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    Vector3 localAngle = myTransform.localEulerAngles;
+                    localAngle.y = 0;
+
+                    myTransform.localEulerAngles = localAngle;
+                }
+
+                if (Input.GetKey(KeyCode.W))
+                {
+                    transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+                }
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    Vector3 localAngle = myTransform.localEulerAngles;
+                    localAngle.y = 90;
+
+                    myTransform.localEulerAngles = localAngle;
+                }
+
+                if (Input.GetKey(KeyCode.S))
+                {
+                    transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+                }
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    Vector3 localAngle = myTransform.localEulerAngles;
+                    localAngle.y = -90;
+
+                    myTransform.localEulerAngles = localAngle;
+                }
+            }
         }
-        if (Input.GetKeyDown(KeyCode.A)) 
+
+
+        //カメラの座標が（9,6,9）の時
+        if (target.transform.position.z == 9)
         {
-            transform.Rotate(new Vector3(0, -90, 0));
+            if (target.transform.position.x == 9)
+                if (Input.GetKey(KeyCode.D))
+            {
+                transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                Vector3 localAngle = myTransform.localEulerAngles;
+                localAngle.y = -90;
+
+                myTransform.localEulerAngles = localAngle;
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                Vector3 localAngle = myTransform.localEulerAngles;
+                localAngle.y = 90;
+
+                myTransform.localEulerAngles = localAngle;
+            }
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+            }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                Vector3 localAngle = myTransform.localEulerAngles;
+                localAngle.y = 180;
+
+                myTransform.localEulerAngles = localAngle;
+            }
+
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                Vector3 localAngle = myTransform.localEulerAngles;
+                localAngle.y = 0;
+
+                myTransform.localEulerAngles = localAngle;
+            }
         }
-        
+
+
+        //カメラの座標が（20,6,0）の時
+        if (target.transform.position.z == 0)
+        {
+            if (target.transform.position.x == 20)
+            {
+                if (Input.GetKey(KeyCode.D))
+                {
+                    transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+                }
+                if (Input.GetKeyDown(KeyCode.D))
+                {
+                    Vector3 localAngle = myTransform.localEulerAngles;
+                    localAngle.y = 0;
+
+                    myTransform.localEulerAngles = localAngle;
+                }
+
+                if (Input.GetKey(KeyCode.A))
+                {
+                    transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+                }
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    Vector3 localAngle = myTransform.localEulerAngles;
+                    localAngle.y = 180;
+
+                    myTransform.localEulerAngles = localAngle;
+                }
+
+                if (Input.GetKey(KeyCode.W))
+                {
+                    transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+                }
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    Vector3 localAngle = myTransform.localEulerAngles;
+                    localAngle.y = -90;
+
+                    myTransform.localEulerAngles = localAngle;
+                }
+
+                if (Input.GetKey(KeyCode.S))
+                {
+                    transform.position -= transform.TransformDirection(Vector3.back) * 3f * Time.deltaTime;
+                }
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    Vector3 localAngle = myTransform.localEulerAngles;
+                    localAngle.y = 90;
+
+                    myTransform.localEulerAngles = localAngle;
+                }
+            }
+        }
+
+        //棚の前でEnterを押すとシーンの移動
+        if (transform.position.z < -3)
+        {
+            if (transform.position.z > -7)
+            {
+                if (transform.position.x < 3)
+                {
+                    if (transform.position.x > 0)
+                    {
+                        if (Input.GetKeyDown(KeyCode.Return))
+                        {
+                            SceneManager.LoadScene("Tana");
+                        }
+                    }
+                }
+            }
+        }
+       
+        //ベッドの前でEnterを押すと
     }
 }
